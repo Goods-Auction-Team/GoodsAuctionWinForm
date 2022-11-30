@@ -1,4 +1,4 @@
-﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
+﻿using GoodsAuctionWinFormsApp.Entity;
 
 namespace GoodsAuctionWinFormsApp.Boundary
 {
