@@ -1,5 +1,8 @@
-﻿namespace GoodsAuctionWinFormsApp.Entity
+﻿using System;
+
+namespace GoodsAuction.Entity
 {
+
     public class Item
     {
         private int itemID;
