@@ -30,10 +30,11 @@
         {
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.usernameTextbox = new System.Windows.Forms.TextBox();
+            this.passwordTextbox = new System.Windows.Forms.TextBox();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.loginButton = new System.Windows.Forms.Button();
+            this.failedLoginLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // welcomeLabel
@@ -55,20 +56,20 @@
             this.usernameLabel.TabIndex = 1;
             this.usernameLabel.Text = "Username:";
             // 
-            // textBox1
+            // usernameTextbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(209, 121);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(339, 38);
-            this.textBox1.TabIndex = 1;
+            this.usernameTextbox.Location = new System.Drawing.Point(209, 121);
+            this.usernameTextbox.Name = "usernameTextbox";
+            this.usernameTextbox.Size = new System.Drawing.Size(339, 38);
+            this.usernameTextbox.TabIndex = 1;
             // 
-            // passwordTextBox
+            // passwordTextbox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(209, 187);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(339, 38);
-            this.passwordTextBox.TabIndex = 2;
+            this.passwordTextbox.Location = new System.Drawing.Point(209, 187);
+            this.passwordTextbox.Name = "passwordTextbox";
+            this.passwordTextbox.PasswordChar = '●';
+            this.passwordTextbox.Size = new System.Drawing.Size(339, 38);
+            this.passwordTextbox.TabIndex = 2;
             // 
             // passwordLabel
             // 
@@ -83,22 +84,33 @@
             // 
             this.loginButton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.loginButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.loginButton.Location = new System.Drawing.Point(248, 276);
+            this.loginButton.Location = new System.Drawing.Point(253, 290);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(152, 46);
             this.loginButton.TabIndex = 4;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = false;
             // 
+            // failedLoginLabel
+            // 
+            this.failedLoginLabel.AutoSize = true;
+            this.failedLoginLabel.ForeColor = System.Drawing.Color.Red;
+            this.failedLoginLabel.Location = new System.Drawing.Point(99, 242);
+            this.failedLoginLabel.Name = "failedLoginLabel";
+            this.failedLoginLabel.Size = new System.Drawing.Size(449, 31);
+            this.failedLoginLabel.TabIndex = 5;
+            this.failedLoginLabel.Text = "Login Failed -- Check Username/Password!";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 367);
+            this.Controls.Add(this.failedLoginLabel);
             this.Controls.Add(this.loginButton);
-            this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.passwordTextbox);
             this.Controls.Add(this.passwordLabel);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.usernameTextbox);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.welcomeLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -114,9 +126,10 @@
 
         private Label welcomeLabel;
         private Label usernameLabel;
-        private TextBox textBox1;
-        private TextBox passwordTextBox;
+        private TextBox usernameTextbox;
+        private TextBox passwordTextbox;
         private Label passwordLabel;
         private Button loginButton;
+        private Label failedLoginLabel;
     }
 }
