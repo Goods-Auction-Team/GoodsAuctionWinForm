@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GoodsAuction.Entity
+namespace GoodsAuctionWinFormsApp.Entity
 {
 
     public class Item

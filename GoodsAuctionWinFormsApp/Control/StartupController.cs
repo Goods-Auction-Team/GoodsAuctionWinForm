@@ -1,10 +1,12 @@
-﻿namespace GoodsAuctionWinFormsApp.Control
+﻿using GoodsAuctionWinFormsApp.Boundary;
+
+namespace GoodsAuctionWinFormsApp.Control
 {
     public class StartupController : Controller
     {
-        public void initiate()
-        {
-            //DBConnect.initiateDB();
-        }
+        //public void initiate()
+        //{
+        //    DBConnect.initDB();
+        //}
     }
 }
