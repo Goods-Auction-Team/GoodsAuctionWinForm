@@ -8,7 +8,7 @@ namespace GoodsAuctionWinFormsApp.Control
         public void initiate()
         {
             //DBConnect.initiateDB();
-            lf = new LoginForm();
+            lf = new LoginForm(false);
             
         }
     }
