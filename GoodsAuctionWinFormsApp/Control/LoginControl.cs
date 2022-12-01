@@ -5,7 +5,7 @@ namespace GoodsAuctionWinFormsApp.Control
     public class LoginControl : Controller
     {
         private Account username;
-        public bool login(Account username, Account password)
+        public static bool login(string username, string password)
         {
             //login
             return false;
