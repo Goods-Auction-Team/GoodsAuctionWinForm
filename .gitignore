@@ -361,3 +361,16 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/GoodsAuctionWinFormsApp/obj/GoodsAuctionWinFormsApp.csproj.nuget.dgspec.json
+/GoodsAuctionWinFormsApp/bin/Debug/net6.0-windows/GoodsAuctionWinFormsApp.dll
+/GoodsAuctionWinFormsApp/bin/Debug/net6.0-windows/GoodsAuctionWinFormsApp.pdb
+/GoodsAuctionWinFormsApp/obj/Debug/net6.0-windows/GoodsAuctionWinFormsApp.assets.cache
+/GoodsAuctionWinFormsApp/obj/Debug/net6.0-windows/GoodsAuctionWinFormsApp.csproj.FileListAbsolute.txt
+/GoodsAuctionWinFormsApp/obj/Debug/net6.0-windows/GoodsAuctionWinFormsApp.csproj.GenerateResource.cache
+/GoodsAuctionWinFormsApp/obj/Debug/net6.0-windows/GoodsAuctionWinFormsApp.dll
+/GoodsAuctionWinFormsApp/obj/Debug/net6.0-windows/GoodsAuctionWinFormsApp.GeneratedMSBuildEditorConfig.editorconfig
+/GoodsAuctionWinFormsApp/obj/Debug/net6.0-windows/GoodsAuctionWinFormsApp.genruntimeconfig.cache
+/GoodsAuctionWinFormsApp/obj/Debug/net6.0-windows/GoodsAuctionWinFormsApp.pdb
+/GoodsAuctionWinFormsApp/obj/GoodsAuctionWinFormsApp.csproj.nuget.g.props
+/GoodsAuctionWinFormsApp/obj/project.assets.json
+/GoodsAuctionWinFormsApp/obj/project.nuget.cache
