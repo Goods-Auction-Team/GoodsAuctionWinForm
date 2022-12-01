@@ -374,3 +374,4 @@ FodyWeavers.xsd
 /GoodsAuctionWinFormsApp/obj/GoodsAuctionWinFormsApp.csproj.nuget.g.props
 /GoodsAuctionWinFormsApp/obj/project.assets.json
 /GoodsAuctionWinFormsApp/obj/project.nuget.cache
+/GoodsAuctionWinFormsApp/obj/Debug/net6.0-windows/GoodsAuctionWinFormsApp.designer.runtimeconfig.json
