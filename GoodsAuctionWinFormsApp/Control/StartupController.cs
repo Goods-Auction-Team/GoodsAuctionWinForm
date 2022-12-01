@@ -1,12 +1,15 @@
 ﻿using GoodsAuctionWinFormsApp.Boundary;
-
 namespace GoodsAuctionWinFormsApp.Control
 {
     public class StartupController : Controller
     {
-        //public void initiate()
-        //{
-        //    DBConnect.initDB();
-        //}
+        private LoginForm lf;
+
+        public void initiate()
+        {
+            //DBConnect.initiateDB();
+            lf = new LoginForm();
+            
+        }
     }
 }

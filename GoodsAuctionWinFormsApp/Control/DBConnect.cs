@@ -31,18 +31,21 @@ namespace GoodsAuctionWinFormsApp.Control
 
         public Item getItem(Item itemID)
         {
-            return null;//This item ID returns the item
+            //This item ID returns the item
+            return null;
         }
 
         public ItemList modifyItem(Item itemID, string newBid, Account username)
         {
             return null;//This is the placebid where it updates the item after bid and 
             //returns ItemList
+            return null;
         }
 
         public ItemList saveItem(Item item)
         {
-            return null;//This is the addItem where the data is saved
+            //This is the addItem where the data is saved
+            return null;
         }
 
     }
