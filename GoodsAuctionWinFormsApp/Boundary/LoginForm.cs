@@ -1,9 +1,12 @@
 ﻿
+using Microsoft.VisualBasic.Logging;
+
 namespace GoodsAuctionWinFormsApp.Boundary
 {
     public partial class LoginForm : Form
     {
 
+        //Constructor for LoginForm - the bool determines first logon vs someone having logged out.
         public LoginForm(bool loggedOut)
         {
             InitializeComponent();
@@ -17,20 +20,15 @@ namespace GoodsAuctionWinFormsApp.Boundary
         private string error;
 
 
-
-
-        private void failedLoginLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
+        //This will pull the UN & PW typed in in the boxes and call LoginController's login function. If that returns false (i.e. login failed)
+        //displays failed login.
         private void loginButton_Click_1(object sender, EventArgs e)
         {
-            string un = usernameTextbox.Text;
-            string pw = passwordTextbox.Text;
-            bool success = Control.LoginControl.login(un, pw);
+            bool success = Control.LoginControl.login(usernameTextbox.Text, passwordTextbox.Text);
             if (!success)
             {
+                failedLoginLabel.Text = "Login Failed-- Check Username/ Password!";
                 failedLoginLabel.Visible = true;
             }
         }

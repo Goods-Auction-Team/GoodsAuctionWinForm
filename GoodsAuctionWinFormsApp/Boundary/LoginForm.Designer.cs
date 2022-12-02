@@ -99,11 +99,9 @@
             this.failedLoginLabel.Location = new System.Drawing.Point(99, 242);
             this.failedLoginLabel.Name = "failedLoginLabel";
             this.failedLoginLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.failedLoginLabel.Size = new System.Drawing.Size(449, 31);
+            this.failedLoginLabel.Size = new System.Drawing.Size(0, 31);
             this.failedLoginLabel.TabIndex = 5;
-            this.failedLoginLabel.Text = "Login Failed -- Check Username/Password!";
             this.failedLoginLabel.Visible = false;
-            this.failedLoginLabel.Click += new System.EventHandler(this.failedLoginLabel_Click);
             // 
             // LoginForm
             // 
