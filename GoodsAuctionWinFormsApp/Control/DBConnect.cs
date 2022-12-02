@@ -48,6 +48,17 @@ namespace GoodsAuctionWinFormsApp.Control
             return null;
         }
 
+        // adding saveLogout(un) from sequence diagram
+        public bool saveLogout(string username)
+        {
+            // not sure if this is right, but I'm trying to check if it saved correctly
+            // if true, sends it back to LoginForm for (logged out sucess)
+            if (username != null)
+            {
+                return true;
+            }
+            else { return false; }
+        }
     }
 }
 

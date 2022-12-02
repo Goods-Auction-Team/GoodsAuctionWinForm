@@ -1,8 +1,10 @@
-﻿namespace GoodsAuctionWinFormsApp.Control
+﻿using GoodsAuctionWinFormsApp.Boundary;
+namespace GoodsAuctionWinFormsApp.Control
 {
     public class Controller
     {
         List<Form> formList;
+        private LoginForm lf;
 
         public Controller()
         {

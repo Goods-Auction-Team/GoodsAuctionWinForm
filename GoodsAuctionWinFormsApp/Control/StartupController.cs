@@ -3,13 +3,15 @@ namespace GoodsAuctionWinFormsApp.Control
 {
     public class StartupController : Controller
     {
-        private LoginForm lf;
-
         public void initiate()
         {
-            //DBConnect.initiateDB();
-            lf = new LoginForm(false);
-            
+            /*
+            // call initDB 
+            DBConnect.initDB();
+
+            // open login form?
+            addForm(new LoginForm());
+            */
         }
     }
 }
