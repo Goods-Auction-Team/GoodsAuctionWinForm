@@ -13,7 +13,7 @@ namespace GoodsAuctionWinFormsApp.Control
             DBConnect.InitDB();
 
             // open login form?
-            addForm(new LoginForm(false));
+            addForm(new LoginForm());
 
         }
     }

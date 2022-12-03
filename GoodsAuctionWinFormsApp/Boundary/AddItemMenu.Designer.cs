@@ -95,6 +95,7 @@
             this.insertNewItemButton.TabIndex = 2;
             this.insertNewItemButton.Text = "Insert New Item";
             this.insertNewItemButton.UseVisualStyleBackColor = true;
+            this.insertNewItemButton.Click += new System.EventHandler(this.insertNewItemButton_Click);
             // 
             // logoutButton
             // 
@@ -105,6 +106,7 @@
             this.logoutButton.TabIndex = 3;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // AddItemMenu
             // 

@@ -15,7 +15,7 @@ namespace GoodsAuctionWinFormsApp.Control
         public static bool Submit(Item item)
         {
             //code here to check for validity and to send to entity
-            return false;
+            return true;
         }
     }
 }

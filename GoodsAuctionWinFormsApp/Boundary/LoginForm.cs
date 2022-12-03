@@ -7,18 +7,19 @@ namespace GoodsAuctionWinFormsApp.Boundary
     {
 
         //Constructor for LoginForm - the bool determines first logon vs someone having logged out.
-        public LoginForm(bool loggedOut)
+        public LoginForm()
         {
             InitializeComponent();
-            if (loggedOut)
-            {
-
-                failedLoginLabel.Text = "Logged out successully!";
-                failedLoginLabel.Visible = true;
-            }
+            
         }
         private string error;
 
+        public void setLoggedOut()
+        {
+           failedLoginLabel.Text = "Logged out successully!";
+           failedLoginLabel.Visible = true;
+            this.Visible = true;
+        }
 
         
         //This will pull the UN & PW typed in in the boxes and call LoginController's login function. If that returns false (i.e. login failed)
@@ -31,6 +32,8 @@ namespace GoodsAuctionWinFormsApp.Boundary
                 failedLoginLabel.Text = "Login Failed-- Check Username/ Password!";
                 failedLoginLabel.Visible = true;
             }
+            else
+                this.Hide();
         }
 
 
