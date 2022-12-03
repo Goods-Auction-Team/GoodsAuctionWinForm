@@ -1,4 +1,5 @@
-﻿using GoodsAuctionWinFormsApp.Entity;
+﻿using GoodsAuctionWinFormsApp.Boundary;
+using GoodsAuctionWinFormsApp.Entity;
 
 namespace GoodsAuctionWinFormsApp.Control
 {
@@ -6,8 +7,10 @@ namespace GoodsAuctionWinFormsApp.Control
     {
         private Account username;
 
-        public void logout(string username)
+        public static void logout()
         {
+            //can pull UN from loginControl, rather than having the boundries hold the name
+
             // pass in username, return?
             /* Account account = DBConnect.getUser();
              */

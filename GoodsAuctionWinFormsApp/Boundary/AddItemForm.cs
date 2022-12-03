@@ -59,7 +59,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
                 //if acceted, destroys window
                 if(succesfulAdd)
                 {
-                    System.Windows.Forms.Application.Exit();
+                    this.Close();
                 }
                 else
                 {
