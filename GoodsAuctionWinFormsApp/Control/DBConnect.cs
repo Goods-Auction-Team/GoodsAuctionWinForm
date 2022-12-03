@@ -1,125 +1,153 @@
 ﻿using GoodsAuctionWinFormsApp.Boundary;
 using GoodsAuctionWinFormsApp.Entity;
+using System.Collections.Generic;
+using System.Data.SQLite;
 
 namespace GoodsAuctionWinFormsApp.Control
 {
-    public class DBConnect : Controller
+    public static class DBConnector
     {
-        private Account user;
-        private Item itemID;
-        private ItemList item;
-        private Account username;
-
-        public void initDB()
+        public static void InitializeDB()
         {
-            
-        }
-
-        public DBConnect(Account username)
-        {
-            this.username = username;
-        }
-
-        public Account getUser()
-        {
-            return username;
-        }
-        public void saveLogout(Account username)
-        {
-            this.username = username;
-        }
-
-        public Item getItem(Item itemID)
-        {
-            //This item ID returns the item
-            return null;
-        }
-
-        public ItemList modifyItem(Item itemID, string newBid, Account username)
-        {
-            return null;//This is the placebid where it updates the item after bid and 
-            //returns ItemList
-            return null;
-        }
-
-        public ItemList saveItem(Item item)
-        {
-            //This is the addItem where the data is saved
-            return null;
-        }
-
-        // adding saveLogout(un) from sequence diagram
-        public bool saveLogout(string username)
-        {
-            // not sure if this is right, but I'm trying to check if it saved correctly
-            // if true, sends it back to LoginForm for (logged out sucess)
-            if (username != null)
+            using (SQLiteConnection conn = new SQLiteConnection(@"data source = nAuctionDb.db"))
             {
-                return true;
+                using (SQLiteCommand cmnd = new SQLiteCommand())
+                {
+                    conn.Open();
+                    cmnd.Connection = conn;
+                    string strSql = @"BEGIN TRANSACTION; 
+                     DROP TABLE IF EXISTS ACCOUNT;
+                     DROP TABLE IF EXISTS ITEM;
+                     DROP TABLE IF EXISTS LOGOUT;
+                     DROP TABLE IF EXISTS BIDS;
+                     COMMIT;";
+
+                    cmnd.CommandText = strSql;
+                    cmnd.ExecuteNonQuery();
+                    string table = @"CREATE TABLE [ACCOUNT] (
+                                 [username] TEXT NOT NULL
+                               , [password] TEXT NOT NULL)
+                               , [password] TEXT NOT NULL);";
+
+                    cmnd.CommandText = table;
+                    cmnd.ExecuteNonQuery();
+                    table = @"CREATE TABLE [ITEM] (
+                    [ItemId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
+                    , [ItemName] TEXT NOT NULL
+                    , [ItemDescription] TEXT NOT NULL
+                    , [StatingBid] FLOAT NOT NULL                     
+                    , [currentBid] FLOAT NOT NULL
+                    , [timeRemaining] DATETIME NOT NULL
+                    , [currentLeader] TEXT NOT NULL
+                    , [username] TEXT NOT NULL
+                    , CONSTRAINT [PK_ITEM] PRIMARY KEY ([ItemId])
+                    , FOREIGN KEY([username]) REFERENCES [ACCOUNT]([username]));";
+
+                    cmnd.CommandText = table;
+                    cmnd.ExecuteNonQuery();
+                    table = @"CREATE TABLE [LOGOUT] (
+                                [Id] TEXT NOT NULL)
+                              , [Date] TEXT NOT NULL)
+                              , [Time] TEXT NOT NULL)
+                              , [UName] TEXT NOT NULL)
+                              , CONSTRAINT [PK_ITEM] PRIMARY KEY ([ItemId])
+                              , FOREIGN KEY([UName]) REFERENCES [ACCOUNT]([username]));";
+
+                    cmnd.CommandText = table;
+                    cmnd.ExecuteNonQuery();
+                    table = @"CREATE TABLE [LOGOUT] (
+                                [Id] TEXT NOT NULL)
+                              , [Date] TEXT NOT NULL)
+                              , [Time] TEXT NOT NULL)
+                              , [UName] TEXT NOT NULL)
+                              , CONSTRAINT [PK_ITEM] PRIMARY KEY ([ItemId])
+                }
             }
-            else { return false; }
+        }
+        public static List<Item> getItem()
+        {
+            List<Item> ItemInfoList = new List<Item>();
+            using (SQLiteConnection conn = new SQLiteConnection(@"data source = nAuctionDb.db"))
+            {
+                using (SQLiteCommand cmnd = new SQLiteCommand())
+                {
+                    conn.Open();
+                    cmnd.Connection = conn;
+                    cmnd.CommandText = "SELECT * FROM ITEM;";
+                    using (SQLiteDataReader rdr = cmnd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            string readerString = rdr.GetString(0);
+                            //ItemInfoList.Add(new Item(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4)));
+                        }
+                    }
+                }
+            }
+            return ItemInfoList;
+        }
+        public class DBConnect : Controller
+        {
+            private Account user;
+            private Item itemID;
+            private ItemList item;
+            private Account username;
+
+            public void initDB()
+            {
+
+            }
+
+            public DBConnect(Account username)
+            {
+                this.username = username;
+            }
+
+            public Account getUser()
+            {
+                return username;
+            }
+            public void saveLogout(Account username)
+            {
+                this.username = username;
+            }
+
+            public Item getItem(Item itemID)
+            {
+                //This item ID returns the item
+                return null;
+            }
+
+            public ItemList modifyItem(Item itemID, string newBid, Account username)
+            {
+                return null;//This is the placebid where it updates the item after bid and 
+                            //returns ItemList
+                return null;
+            }
+
+            public ItemList saveItem(Item item)
+            {
+                //This is the addItem where the data is saved
+                return null;
+            }
+
+            // adding saveLogout(un) from sequence diagram
+            public bool saveLogout(string username)
+            {
+                // not sure if this is right, but I'm trying to check if it saved correctly
+                // if true, sends it back to LoginForm for (logged out sucess)
+                if (username != null)
+                {
+                    return true;
+                }
+                else { return false; }
+            }
         }
     }
 }
 
-//John's code
-//namespace CarRentalSystem.Controllers
-//{
-//    public static class DBConnector
-//    {
-//        public static void InitializeDB()
-//        {
-//            using (SQLiteConnection conn = new SQLiteConnection(@"data source = nCarDb.db"))
-//            {
-//                using (SQLiteCommand cmnd = new SQLiteCommand())
-//                {
-//                    conn.Open();
-//                    cmnd.Connection = conn;
-//                    string strSql = @"BEGIN TRANSACTION; 
-//                    DROP TABLE IF EXISTS ACCOUNT;
-//                    DROP TABLE IF EXISTS LOGIN;
-//                    DROP TABLE IF EXISTS LOGOUT;
-//                    DROP TABLE IF EXISTS ITEM;
-//                    DROP TABLE IF EXISTS BIDS;
-//                    COMMIT;";
-//                    cmnd.CommandText = strSql;
-//                    cmnd.ExecuteNonQuery();
-//                    string table = @"CREATE TABLE [ACCOUNT] (
-//                                  [Id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
-//                                , [username] INTEGER NOT NULL
-//                                , [password] INTEGER NOT NULL
-//                                , [type] TEXT NOT NULL
-//                                );";
-//                    // DOES THIS NEED TO BE DELETED?
-//                    //cmnd.CommandText = table;
-//                    // cmnd.ExecuteNonQuery();
-//                    //table = @"CREATE TABLE [LOGIN] (
-//                    // [acctID] INTEGER NOT NULL
-//                    //, [timestamp] TEXT NOT NULL
-//                    //, CONSTRAINT [PK_LOGIN] PRIMARY KEY ([acctID],[timestamp])
-//                    // , FOREIGN KEY([acctID]) REFERENCES [ACCOUNT]([id])
-//                    // );";
-//                    cmnd.CommandText = table;
-//                    cmnd.ExecuteNonQuery();
-//                    table = @"CREATE TABLE [LOGOUT] (
-//                    [Id] INTEGER NOT NULL
-//                    , [Date] TEXT NOT NULL
-//                    , [Time] TEXT NOT NULL
-//                    , [UName] TEXT NOT NULL
-//                    , CONSTRAINT [PK_LOGOUT] PRIMARY KEY ([Id])
-//                    , FOREIGN KEY([UName]) REFERENCES [ACCOUNT]([UserName])
-//                    );";
-//                    cmnd.CommandText = table;
-//                    cmnd.ExecuteNonQuery();
-//                    table = @"CREATE TABLE [ITEM] (
-//                    [ItemId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
-//                    , [ItemDescription] TEXT NOT NULL
-//                    , [ItemName] TEXT NOT NULL
-//                    , [StatingBid] TEXT NOT NULL
-//                    , [Seller] TEXT NOT NULL
-//                    , CONSTRAINT [PK_ITEM] PRIMARY KEY ([ItemId])
-//                    , FOREIGN KEY([Seller]) REFERENCES [ACCOUNT]([Type])
-//                    );";
+    //John's code
+
 //                    cmnd.CommandText = table;
 //                    cmnd.ExecuteNonQuery();
 //                    table = @"CREATE TABLE [BIDS] (
@@ -128,7 +156,7 @@ namespace GoodsAuctionWinFormsApp.Control
 //                    , [Amount] INTEGER NOT NULL
 //                    , CONSTRAINT [PK_BIDS] PRIMARY KEY ([ItemNo],[BuyerNo])
 //                    );";
-//                    // DOES THIS NEED TO BE DELETED/OR JUST MOD?
+//                   
 //                    cmnd.CommandText = table;
 //                    cmnd.ExecuteNonQuery();
 //                    strSql = @"BEGIN TRANSACTION; 
@@ -187,27 +215,7 @@ namespace GoodsAuctionWinFormsApp.Control
 //                }
 //            }
 //        }
-//        public static List<Item> getItem()
-//        {
-//            List<Item> ItemInfoList = new List<Item>();
-//            using (SQLiteConnection conn = new SQLiteConnection(@"data source = nCarDb.db")) //update
-//            {
-//                using (SQLiteCommand cmnd = new SQLiteCommand())
-//                {
-//                    conn.Open();
-//                    cmnd.Connection = conn;
-//                    cmnd.CommandText = "SELECT * FROM ITEM;";
-//                    using (SQLiteDataReader rdr = cmnd.ExecuteReader())
-//                    {
-//                        while (rdr.Read())
-//                        {
-//                            ItemInfoList.Add(new Item(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4)));
-//                        }
-//                    }
-//                }
-//            }
-//            return ItemInfoList;
-//        }
+
 //        public static void SaveLogin(string usr)
 //        {
 //            using (SQLiteConnection conn = new SQLiteConnection(@"data source = nCarDb.db"))
