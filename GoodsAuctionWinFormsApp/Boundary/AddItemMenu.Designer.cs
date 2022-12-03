@@ -36,6 +36,7 @@
             this.timeRemainingColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.insertNewItemButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
+            this.ItemIDColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // currentItemsLabel
@@ -53,7 +54,8 @@
             this.itemNameColumnHeader,
             this.currentBidColumnHeader,
             this.currentLeaderColumnHeader,
-            this.timeRemainingColumnHeader});
+            this.timeRemainingColumnHeader,
+            this.ItemIDColumnHeader});
             this.currentItemsListView.FullRowSelect = true;
             this.currentItemsListView.GridLines = true;
             this.currentItemsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -66,23 +68,27 @@
             // 
             // itemNameColumnHeader
             // 
+            this.itemNameColumnHeader.DisplayIndex = 1;
             this.itemNameColumnHeader.Text = "Item Name";
             this.itemNameColumnHeader.Width = 150;
             // 
             // currentBidColumnHeader
             // 
+            this.currentBidColumnHeader.DisplayIndex = 2;
             this.currentBidColumnHeader.Text = "Current Bid";
             this.currentBidColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.currentBidColumnHeader.Width = 130;
             // 
             // currentLeaderColumnHeader
             // 
+            this.currentLeaderColumnHeader.DisplayIndex = 3;
             this.currentLeaderColumnHeader.Text = "Current Leader";
             this.currentLeaderColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.currentLeaderColumnHeader.Width = 170;
             // 
             // timeRemainingColumnHeader
             // 
+            this.timeRemainingColumnHeader.DisplayIndex = 4;
             this.timeRemainingColumnHeader.Text = "Time Remaining";
             this.timeRemainingColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.timeRemainingColumnHeader.Width = 180;
@@ -107,6 +113,12 @@
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
+            // 
+            // ItemIDColumnHeader
+            // 
+            this.ItemIDColumnHeader.DisplayIndex = 0;
+            this.ItemIDColumnHeader.Text = "Item ID";
+            this.ItemIDColumnHeader.Width = 90;
             // 
             // AddItemMenu
             // 
@@ -138,5 +150,6 @@
         private ColumnHeader timeRemainingColumnHeader;
         private Button insertNewItemButton;
         private Button logoutButton;
+        private ColumnHeader ItemIDColumnHeader;
     }
 }

@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.currentItemsListView = new System.Windows.Forms.ListView();
+            this.ItemIDHeader = new System.Windows.Forms.ColumnHeader();
             this.itemNameColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.currentBidColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.currentLeaderColumnHeader = new System.Windows.Forms.ColumnHeader();
@@ -40,6 +41,8 @@
             this.newBidLabel = new System.Windows.Forms.Label();
             this.placeBidButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
+            this.itemSelector = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -55,6 +58,7 @@
             // currentItemsListView
             // 
             this.currentItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ItemIDHeader,
             this.itemNameColumnHeader,
             this.currentBidColumnHeader,
             this.currentLeaderColumnHeader,
@@ -68,6 +72,11 @@
             this.currentItemsListView.TabIndex = 2;
             this.currentItemsListView.UseCompatibleStateImageBehavior = false;
             this.currentItemsListView.View = System.Windows.Forms.View.Details;
+            // 
+            // ItemIDHeader
+            // 
+            this.ItemIDHeader.Text = "Item ID";
+            this.ItemIDHeader.Width = 90;
             // 
             // itemNameColumnHeader
             // 
@@ -95,7 +104,7 @@
             // selectItemLabel
             // 
             this.selectItemLabel.AutoSize = true;
-            this.selectItemLabel.Location = new System.Drawing.Point(240, 357);
+            this.selectItemLabel.Location = new System.Drawing.Point(413, 355);
             this.selectItemLabel.Name = "selectItemLabel";
             this.selectItemLabel.Size = new System.Drawing.Size(234, 31);
             this.selectItemLabel.TabIndex = 3;
@@ -104,9 +113,9 @@
             // selectedDescriptionLabel
             // 
             this.selectedDescriptionLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.selectedDescriptionLabel.Location = new System.Drawing.Point(185, 404);
+            this.selectedDescriptionLabel.Location = new System.Drawing.Point(87, 404);
             this.selectedDescriptionLabel.Name = "selectedDescriptionLabel";
-            this.selectedDescriptionLabel.Size = new System.Drawing.Size(353, 183);
+            this.selectedDescriptionLabel.Size = new System.Drawing.Size(451, 183);
             this.selectedDescriptionLabel.TabIndex = 4;
             this.selectedDescriptionLabel.Text = "[Selected Item Description]";
             // 
@@ -134,6 +143,7 @@
             this.placeBidButton.TabIndex = 7;
             this.placeBidButton.Text = "Place Bid";
             this.placeBidButton.UseVisualStyleBackColor = true;
+            this.placeBidButton.Click += new System.EventHandler(this.placeBidButton_Click);
             // 
             // logoutButton
             // 
@@ -145,11 +155,31 @@
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
             // 
+            // itemSelector
+            // 
+            this.itemSelector.FormattingEnabled = true;
+            this.itemSelector.Location = new System.Drawing.Point(242, 352);
+            this.itemSelector.Name = "itemSelector";
+            this.itemSelector.Size = new System.Drawing.Size(151, 39);
+            this.itemSelector.TabIndex = 9;
+            this.itemSelector.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(45, 352);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(191, 31);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Select an Item ID:";
+            // 
             // PlaceBidMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 701);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.itemSelector);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.placeBidButton);
             this.Controls.Add(this.newBidLabel);
@@ -183,5 +213,8 @@
         private Label newBidLabel;
         private Button placeBidButton;
         private Button logoutButton;
+        private ColumnHeader ItemIDHeader;
+        private ComboBox itemSelector;
+        private Label label2;
     }
 }

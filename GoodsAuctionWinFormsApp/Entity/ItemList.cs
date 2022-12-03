@@ -1,10 +1,11 @@
 ﻿using System;
-
+using System.Collections;
 
 namespace GoodsAuctionWinFormsApp.Entity
 {
 
-    public class ItemList
+    //Allows enumeration of List
+    public class ItemList :IEnumerable<Item>
     {
         List<Item> ItemList1 = new List<Item>();
 
@@ -17,6 +18,17 @@ namespace GoodsAuctionWinFormsApp.Entity
         {
             return ItemList1;
         }
+
+        public IEnumerator<Item> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
 
