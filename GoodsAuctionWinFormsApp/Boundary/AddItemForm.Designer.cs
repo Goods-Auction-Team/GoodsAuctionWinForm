@@ -32,11 +32,12 @@
             this.itemNameTextBox = new System.Windows.Forms.TextBox();
             this.durationLabel = new System.Windows.Forms.Label();
             this.startingBidLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.StartBidBox = new System.Windows.Forms.TextBox();
             this.itemDescriptionLabel = new System.Windows.Forms.Label();
             this.itemDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.addItemButton = new System.Windows.Forms.Button();
             this.durationComboBox = new System.Windows.Forms.ComboBox();
+            this.failLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // itemNameLabel
@@ -77,13 +78,13 @@
             this.startingBidLabel.TabIndex = 3;
             this.startingBidLabel.Text = "Starting Bid";
             // 
-            // textBox1
+            // StartBidBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(236, 66);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(153, 38);
-            this.textBox1.TabIndex = 2;
+            this.StartBidBox.Location = new System.Drawing.Point(236, 66);
+            this.StartBidBox.Margin = new System.Windows.Forms.Padding(5);
+            this.StartBidBox.Name = "StartBidBox";
+            this.StartBidBox.Size = new System.Drawing.Size(153, 38);
+            this.StartBidBox.TabIndex = 2;
             // 
             // itemDescriptionLabel
             // 
@@ -113,6 +114,7 @@
             this.addItemButton.TabIndex = 5;
             this.addItemButton.Text = "Add Item";
             this.addItemButton.UseVisualStyleBackColor = true;
+            this.addItemButton.Click += new System.EventHandler(this.addItemButton_Click);
             // 
             // durationComboBox
             // 
@@ -127,16 +129,28 @@
             this.durationComboBox.Size = new System.Drawing.Size(151, 39);
             this.durationComboBox.TabIndex = 3;
             // 
+            // failLabel
+            // 
+            this.failLabel.AutoSize = true;
+            this.failLabel.ForeColor = System.Drawing.Color.Red;
+            this.failLabel.Location = new System.Drawing.Point(164, 108);
+            this.failLabel.Name = "failLabel";
+            this.failLabel.Size = new System.Drawing.Size(279, 31);
+            this.failLabel.TabIndex = 6;
+            this.failLabel.Text = "Insert Failed! Check fields!";
+            this.failLabel.Visible = false;
+            // 
             // AddItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(596, 423);
+            this.Controls.Add(this.failLabel);
             this.Controls.Add(this.durationComboBox);
             this.Controls.Add(this.addItemButton);
             this.Controls.Add(this.itemDescriptionTextBox);
             this.Controls.Add(this.itemDescriptionLabel);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.StartBidBox);
             this.Controls.Add(this.startingBidLabel);
             this.Controls.Add(this.durationLabel);
             this.Controls.Add(this.itemNameTextBox);
@@ -154,14 +168,16 @@
 
         #endregion
 
+        int[] timeList = { 1, 2, 5, 10, 30, 60, 120, 1440, 10080 };
         private Label itemNameLabel;
         private TextBox itemNameTextBox;
         private Label durationLabel;
         private Label startingBidLabel;
-        private TextBox textBox1;
+        private TextBox StartBidBox;
         private Label itemDescriptionLabel;
         private TextBox itemDescriptionTextBox;
         private Button addItemButton;
         private ComboBox durationComboBox;
+        private Label failLabel;
     }
 }

@@ -5,13 +5,17 @@ namespace GoodsAuctionWinFormsApp.Control
     public class AddItemControl : Controller
     {
         private Item Item; //not sure if this is correct
-        public void insertNewItem()
+
+
+        public static void insertNewItem(string itemName, string itemDescription, int startBid, int duration)
         {
-            //code here
+            
         }
-        public void submit(Item item)
+
+        public static bool Submit(Item item)
         {
-            //code here
+            //code here to check for validity and to send to entity
+            return false;
         }
     }
 }
