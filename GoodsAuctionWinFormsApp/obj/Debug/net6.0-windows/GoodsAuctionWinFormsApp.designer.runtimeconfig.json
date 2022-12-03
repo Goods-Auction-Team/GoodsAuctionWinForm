@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\theda\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\theda\\.nuget\\packages",
+      "C:\\Users\\joywi\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\joywi\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
