@@ -4,7 +4,7 @@ namespace GoodsAuctionWinFormsApp.Entity
 {
     public class Account
     {
-        private string username, password, lastLogout;
+        private string username, password, type;
 
         public string getUsername()
         {
@@ -14,6 +14,10 @@ namespace GoodsAuctionWinFormsApp.Entity
         public string getPassword()
         {
             return password;
+        }
+        public string getType()
+        {
+            return type;
         }
     }
 }
