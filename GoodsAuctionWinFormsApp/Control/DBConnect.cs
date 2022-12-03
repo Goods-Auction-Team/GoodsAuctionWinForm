@@ -5,9 +5,9 @@ using System.Data.SQLite;
 
 namespace GoodsAuctionWinFormsApp.Control
 {
-    public static class DBConnector
+    public static class DBConnect
     {
-        public static void InitializeDB()
+        public static void InitDB()
         {
             using (SQLiteConnection conn = new SQLiteConnection(@"data source = nAuctionDb.db"))
             {
@@ -130,63 +130,58 @@ namespace GoodsAuctionWinFormsApp.Control
    
         
 //Joy's code
-      public class DBConnect : Controller
-        {
-            private Account user;
-            private Item itemID;
-            private ItemList item;
-            private Account username;
+      //public class DBConnect : Controller
+      //  {
+      //      private Account user;
+      //      private Item itemID;
+      //      private ItemList item;
+      //      private Account username;
+                        
+      //      public DBConnect(Account username)
+      //      {
+      //          this.username = username;
+      //      }
 
-            public void initDB()
-            {
+      //      public Account getUser()
+      //      {
+      //          return username;
+      //      }
+      //      public void saveLogout(Account username)
+      //      {
+      //          this.username = username;
+      //      }
 
-            }
+      //      public Item getItem(Item itemID)
+      //      {
+      //          //This item ID returns the item
+      //          return null;
+      //      }
 
-            public DBConnect(Account username)
-            {
-                this.username = username;
-            }
+      //      public ItemList modifyItem(Item itemID, string newBid, Account username)
+      //      {
+      //          return null;//This is the placebid where it updates the item after bid and 
+      //                      //returns ItemList
+      //          return null;
+      //      }
 
-            public Account getUser()
-            {
-                return username;
-            }
-            public void saveLogout(Account username)
-            {
-                this.username = username;
-            }
+      //      public ItemList saveItem(Item item)
+      //      {
+      //          //This is the addItem where the data is saved
+      //          return null;
+      //      }
 
-            public Item getItem(Item itemID)
-            {
-                //This item ID returns the item
-                return null;
-            }
-
-            public ItemList modifyItem(Item itemID, string newBid, Account username)
-            {
-                return null;//This is the placebid where it updates the item after bid and 
-                            //returns ItemList
-                return null;
-            }
-
-            public ItemList saveItem(Item item)
-            {
-                //This is the addItem where the data is saved
-                return null;
-            }
-
-            // adding saveLogout(un) from sequence diagram
-            public bool saveLogout(string username)
-            {
-                // not sure if this is right, but I'm trying to check if it saved correctly
-                // if true, sends it back to LoginForm for (logged out sucess)
-                if (username != null)
-                {
-                    return true;
-                }
-                else { return false; }
-            }
-        }
+      //      // adding saveLogout(un) from sequence diagram
+      //      public bool saveLogout(string username)
+      //      {
+      //          // not sure if this is right, but I'm trying to check if it saved correctly
+      //          // if true, sends it back to LoginForm for (logged out sucess)
+      //          if (username != null)
+      //          {
+      //              return true;
+      //          }
+      //          else { return false; }
+      //      }
+      //  }
     }
 }
 
