@@ -25,9 +25,10 @@ namespace GoodsAuctionWinFormsApp.Control
                     cmnd.CommandText = strSql;
                     cmnd.ExecuteNonQuery();
                     string table = @"CREATE TABLE [ACCOUNT] (
-                                 [username] TEXT NOT NULL
-                               , [password] TEXT NOT NULL)
-                               , [password] TEXT NOT NULL);";
+                                 [username] TEXT PRIMARY KEY NOT NULL
+                               , [password] TEXT NOT NULL
+                               , [type] TEXT NOT NULL
+                               , CONSTRAINT [PK_ACCOUNT] PRIMARY KEY ([username]));";
 
                     cmnd.CommandText = table;
                     cmnd.ExecuteNonQuery();
@@ -35,58 +36,101 @@ namespace GoodsAuctionWinFormsApp.Control
                     [ItemId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
                     , [ItemName] TEXT NOT NULL
                     , [ItemDescription] TEXT NOT NULL
-                    , [StatingBid] FLOAT NOT NULL                     
-                    , [currentBid] FLOAT NOT NULL
-                    , [timeRemaining] DATETIME NOT NULL
+                    , [StatingBid] INTEGER NOT NULL                     
+                    , [currentBid] INTEGER NOT NULL
+                    , [timeRemaining] INTEGER NOT NULL
                     , [currentLeader] TEXT NOT NULL
-                    , [username] TEXT NOT NULL
+                    , [Seller] TEXT NOT NULL
                     , CONSTRAINT [PK_ITEM] PRIMARY KEY ([ItemId])
-                    , FOREIGN KEY([username]) REFERENCES [ACCOUNT]([username]));";
+                    , FOREIGN KEY([Seller]) REFERENCES [ACCOUNT]([username]));";
 
                     cmnd.CommandText = table;
                     cmnd.ExecuteNonQuery();
                     table = @"CREATE TABLE [LOGOUT] (
-                                [Id] TEXT NOT NULL)
-                              , [Date] TEXT NOT NULL)
-                              , [Time] TEXT NOT NULL)
+                                [Id] TEXT NOT NULL
+                              , [Date] INTEGER NOT NULL
+                              , [Time] INTEGER NOT NULL
                               , [UName] TEXT NOT NULL)
-                              , CONSTRAINT [PK_ITEM] PRIMARY KEY ([ItemId])
+                              , CONSTRAINT [PK_LOGOUT] PRIMARY KEY ([Id])
                               , FOREIGN KEY([UName]) REFERENCES [ACCOUNT]([username]));";
 
                     cmnd.CommandText = table;
                     cmnd.ExecuteNonQuery();
-                    table = @"CREATE TABLE [LOGOUT] (
-                                [Id] TEXT NOT NULL)
-                              , [Date] TEXT NOT NULL)
-                              , [Time] TEXT NOT NULL)
-                              , [UName] TEXT NOT NULL)
-                              , CONSTRAINT [PK_ITEM] PRIMARY KEY ([ItemId])
+                    table = @"CREATE TABLE [BIDS] (
+                                [ItemNo] TEXT PRIMARY KEY NOT NULL
+                              , [BuyerNo] TEXT PRIMARY KEY NOT NULL
+                              , [Amount] INTEGER NOT NULL
+                              , CONSTRAINT [PK_BIDS] PRIMARY KEY ([ItemNo],[BuyerNo]));";
                 }
             }
         }
-        public static List<Item> getItem()
+      public static void InsertData(SQLiteConnection conn)
         {
-            List<Item> ItemInfoList = new List<Item>();
-            using (SQLiteConnection conn = new SQLiteConnection(@"data source = nAuctionDb.db"))
-            {
-                using (SQLiteCommand cmnd = new SQLiteCommand())
-                {
-                    conn.Open();
-                    cmnd.Connection = conn;
-                    cmnd.CommandText = "SELECT * FROM ITEM;";
-                    using (SQLiteDataReader rdr = cmnd.ExecuteReader())
-                    {
-                        while (rdr.Read())
-                        {
-                            string readerString = rdr.GetString(0);
-                            //ItemInfoList.Add(new Item(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4)));
-                        }
-                    }
-                }
-            }
-            return ItemInfoList;
+            SQLiteCommand sqliteCommand;
+            sqliteCommand = conn.CreateCommand();
+            sqliteCommand.CommandText = "INSERT INTO ACCOUT(username" +
+                "                                          , password" +
+                "                                          , type) VALUES ('','','')";
+            sqliteCommand.ExecuteNonQuery();
+
+            sqliteCommand.CommandText = "INSERT INTO ITEM(itemId" +
+                "                                         ,itemName" +
+                "                                         ,itemDescription" +
+                "                                         ,startingBid" +
+                "                                         ,currentBid" +
+                "                                         ,timeRemaining" +
+                "                                         ,currentLeader" +
+                "                                         ,Seller) VALUES ('','','','','','','','')";
+            sqliteCommand.ExecuteNonQuery();
+
+            sqliteCommand.CommandText = "INSERT INTO LOGOUT(Id" +
+    "                                         ,Date" +
+    "                                         ,Time" +
+    "                                         ,UName) VALUES('', '', '', '')";
+            sqliteCommand.ExecuteNonQuery();
+
+            sqliteCommand.CommandText = "INSERT INTO BIDS(ItemNo" +
+    "                                          , BuyerNo" +
+    "                                          , Amount) VALUES ('','','')";
+            sqliteCommand.ExecuteNonQuery();
         }
-        public class DBConnect : Controller
+      public static void ReadData(SQLiteConnection conn)
+        {
+            SQLiteDataReader sqliteReader;
+            SQLiteCommand sqliteCommand;
+            sqliteCommand=conn.CreateCommand();
+            sqliteCommand.CommandText = "SELECT * FROM ACCOUNT";
+            sqliteReader = sqliteCommand.ExecuteReader();   
+            while(sqliteReader.Read())
+            {
+                string readerstring = sqliteReader.GetString(0);    
+            }
+
+            sqliteCommand.CommandText = "SELECT * FROM ITEM";
+            sqliteReader = sqliteCommand.ExecuteReader();
+            while (sqliteReader.Read())
+            {
+                string readerstring = sqliteReader.GetString(0);
+            }
+            
+            sqliteCommand.CommandText = "SELECT * FROM LOGOUT";
+            sqliteReader = sqliteCommand.ExecuteReader();
+            while (sqliteReader.Read())
+            {
+                string readerstring = sqliteReader.GetString(0);
+            }
+
+            sqliteCommand.CommandText = "SELECT * FROM BIDS";
+            sqliteReader = sqliteCommand.ExecuteReader();
+            while (sqliteReader.Read())
+            {
+                string readerstring = sqliteReader.GetString(0);
+            }
+        }
+   
+        
+//Joy's code
+      public class DBConnect : Controller
         {
             private Account user;
             private Item itemID;
@@ -146,261 +190,4 @@ namespace GoodsAuctionWinFormsApp.Control
     }
 }
 
-    //John's code
 
-//                    cmnd.CommandText = table;
-//                    cmnd.ExecuteNonQuery();
-//                    table = @"CREATE TABLE [BIDS] (
-//                    [ItemNo] INTEGER NOT NULL
-//                    , [BuyerNo] INTEGER NOT NULL
-//                    , [Amount] INTEGER NOT NULL
-//                    , CONSTRAINT [PK_BIDS] PRIMARY KEY ([ItemNo],[BuyerNo])
-//                    );";
-//                   
-//                    cmnd.CommandText = table;
-//                    cmnd.ExecuteNonQuery();
-//                    strSql = @"BEGIN TRANSACTION; 
-//                    INSERT INTO ACCOUNT (username, password, type) VALUES ($hashusr1, $hashpwd1, 'customer');
-//                    INSERT INTO ACCOUNT (username, password, type) VALUES ($hashusr2, $hashpwd2, 'employee');
-//                    INSERT INTO VEHICLE (make, model, year) VALUES ('Honda', 'Civic', '2021');
-//                    INSERT INTO VEHICLE (make, model, year) VALUES ('Subaru', 'Outback', '2021');
-//                    INSERT INTO RESERVATION (acctID, vid, startDate, endDate) VALUES (1, 1, 20211201, 20211203);
-//                    COMMIT;";
-//                    cmnd.CommandText = strSql;
-//                    string usrname1 = "cus";
-//                    string pwd1 = "1qaz";
-//                    string usrname2 = "emp";
-//                    string pwd2 = "2wsx";
-//                    int x = usrname1.GetHashCode();
-//                    int y = pwd1.GetHashCode();
-//                    int x1 = usrname2.GetHashCode();
-//                    int y1 = pwd2.GetHashCode();
-//                    cmnd.Parameters.AddWithValue("$hashusr1", x);
-//                    cmnd.Parameters.AddWithValue("$hashpwd1", y);
-//                    cmnd.Parameters.AddWithValue("$hashusr2", x1);
-//                    cmnd.Parameters.AddWithValue("$hashpwd2", y1);
-//                    cmnd.ExecuteNonQuery();
-//                    conn.Close();
-//                }
-//            }
-//        }
-//        public static Account GetUser(string usr, string pwd)
-//        {
-//            using (SQLiteConnection conn = new SQLiteConnection(@"data source = nCarDb.db"))
-//            {
-//                conn.Open();
-//                int x = usr.GetHashCode();
-//                int y = pwd.GetHashCode();
-//                string stm = @"SELECT[Id]
-//                        ,[username]
-//                        ,[password]
-//                        ,[type]             
-//                        FROM[ACCOUNT]
-//                        WHERE[username] == ($name)
-//                        AND[password] == ($pd);";
-//                using (SQLiteCommand cmnd = new SQLiteCommand(stm, conn))
-//                {
-//                    cmnd.Parameters.AddWithValue("$name", x);
-//                    cmnd.Parameters.AddWithValue("$pd", y);
-//                    using (SQLiteDataReader rdr = cmnd.ExecuteReader())
-//                    {
-//                        while (rdr.Read())
-//                        {
-//                            Account acct = new Account(rdr.GetInt32(0), usr, rdr.GetString(3));
-//                            return acct;
-//                        }
-//                        Account act = new Account(0, null, null);
-//                        return act;
-//                    }
-//                }
-//            }
-//        }
-
-//        public static void SaveLogin(string usr)
-//        {
-//            using (SQLiteConnection conn = new SQLiteConnection(@"data source = nCarDb.db"))
-//            {
-//                conn.Open();
-//                DateTime time = DateTime.Now;
-//                string t = time.ToString("s");
-//                int id = 0;
-//                int hash = usr.GetHashCode();
-//                string stm = "SELECT [id] FROM ACCOUNT WHERE username = ($name);";
-//                using (SQLiteCommand cmnd = new SQLiteCommand(stm, conn))
-//                {
-//                    cmnd.Parameters.AddWithValue("$name", hash);
-//                    using (SQLiteDataReader rdr = cmnd.ExecuteReader())
-//                    {
-//                        while (rdr.Read())
-//                        {
-//                            id = rdr.GetInt32(0);
-//                        }
-//                    }
-//                }
-//                stm = @"INSERT INTO LOGIN VALUES($id, $time);";
-//                using (SQLiteCommand cmnd = new SQLiteCommand())
-//                {
-//                    cmnd.Connection = conn;
-//                    cmnd.CommandText = stm;
-//                    cmnd.Parameters.AddWithValue("$id", id);
-//                    cmnd.Parameters.AddWithValue("$time", t);
-//                    cmnd.ExecuteNonQuery();
-//                }
-//            }
-//        }
-//        public static Item GetItem(int id) // returns item info from database
-//        {
-//            SQLiteConnection conn = new SQLiteConnection("Data Source = nCarDb.db;");
-//            {
-//                conn.Open();
-//                {
-//                    SQLiteCommand cmd = conn.CreateCommand();
-//                    cmd.CommandText = "SELECT * FROM ITEM WHERE id = '" + id + "';";
-//                    SQLiteDataReader reader = cmd.ExecuteReader();
-//                    reader.Read();
-//                    Item I = new Item(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4));
-//                    reader.Close();
-//                    conn.Close();
-//                    return I;
-//                }
-//            }
-//        }
-//        public static bool Bids(int itemno, int buyerno, int amount) // DOUBLE CHECK  
-//        {
-//            SQLiteConnection conn = new SQLiteConnection("Data Source = nCarDb.db;");
-//            {
-//                conn.Open();
-//                {
-//                    SQLiteCommand cmd = conn.CreateCommand();
-//                    // STILL WORKING
-//                    cmd.CommandText = "SELECT 1 FROM RESERVATION WHERE vid = '" + vid
-//                    + "' AND startDate = '" + inputStart
-//                    + "' OR vid = '" + vid + "' AND startDate = '" + inputEnd
-//                    + "' OR vid = '" + vid + "' AND endDate = '" + inputStart
-//                    + "' OR vid = '" + vid + "' AND endDate = '" + inputEnd
-//                    + "' OR vid = '" + vid + "' AND startDate < '" + inputStart
-//                    + "' AND '" + inputStart + "' < endDate OR vid = '" + vid
-//                    + "' AND startDate < '" + inputEnd + "' AND '" + inputEnd
-//                    + "' < endDate OR vid = '" + vid + "' AND '" + inputStart
-//                    + "' < startDate AND '" + inputEnd
-//                    + "' > endDate;";
-//                    SQLiteDataReader reader = cmd.ExecuteReader();
-//                    reader.Read();
-//                    if (reader.HasRows)
-//                    {
-//                        reader.Close();
-//                        conn.Close();
-//                        return false; // a reservation conflict exists; unavailable to reserve for user input dates
-//                    }
-//                    else
-//                    {
-//                        reader.Close();
-//                        conn.Close();
-//                        return true; // no conflict; available for user input dates
-//                    }
-//                }
-//            }
-//        }
-//        // STILL WORKING
-//        public static void SaveLogout(string usr)
-//        {
-//            using (SQLiteConnection conn = new SQLiteConnection(@"data source = nCarDb.db"))
-//            {
-//                conn.Open();
-//                DateTime time = DateTime.Now;
-//                string t = time.ToString("s");
-//                int id = 0;
-//                int hash = usr.GetHashCode();
-//                string stm = "SELECT [id] FROM ACCOUNT WHERE username = ($name);";
-//                using (SQLiteCommand cmnd = new SQLiteCommand(stm, conn))
-//                {
-//                    cmnd.Parameters.AddWithValue("$name", hash);
-//                    using (SQLiteDataReader rdr = cmnd.ExecuteReader())
-//                    {
-//                        while (rdr.Read())
-//                        {
-//                            id = rdr.GetInt32(0);
-//                        }
-//                    }
-//                }
-//                stm = @"INSERT INTO LOGOUT VALUES($id, $time);";
-//                using (SQLiteCommand cmnd = new SQLiteCommand())
-//                {
-//                    cmnd.Connection = conn;
-//                    cmnd.CommandText = stm;
-//                    cmnd.Parameters.AddWithValue("$id", id);
-//                    cmnd.Parameters.AddWithValue("$time", t);
-//                    cmnd.ExecuteNonQuery();
-//                }
-//            }
-//        }
-//        public static void Save(int itemno, int buyerno, int amount) // saves bids to database
-//        {
-//            SQLiteConnection conn = new SQLiteConnection("Data Source = nCarDb.db;");
-//            {
-//                conn.Open();
-//                {
-//                    SQLiteCommand cmd = conn.CreateCommand();
-//                    try
-//                    {
-//                        cmd.CommandText = "INSERT INTO BIDS (ItemNo, BuyerNo, Amount) VALUES (  );"; // ADD BID VALUES TO TABLE?
-//                        cmd.ExecuteNonQuery();
-//                    }
-//                    catch
-//                    {
-//                        AddItemForm.instance.Close();
-//                        throw new Exception("Entry already exist in database"); // somewhat redundant
-//                    }
-//                    finally
-//                    {
-//                        AddItemForm.instance.Close(); // reservationForm closes after reservation saved to database
-//                    }
-//                }
-//            }
-//        }
-//        //STOPPED
-//        public static List<Vehicle> checkAvailDates(int start, int end)
-//        {
-//            SQLiteConnection conn = new SQLiteConnection("Data Source = nCarDb.db;");
-//            {
-//                conn.Open();
-//                {
-//                    List<Vehicle> V = new List<Vehicle>();
-//                    SQLiteCommand cmd = conn.CreateCommand();
-//                    cmd.CommandText = "SELECT * FROM Vehicle;";
-//                    SQLiteDataReader r = cmd.ExecuteReader();
-//                    while (r.Read())
-//                    {
-//                        V.Add(new Vehicle(r.GetInt32(0), r.GetString(1), r.GetString(2), r.GetString(3)));
-//                    }
-//                    r.Close();
-//                    cmd.CommandText = "SELECT vid FROM Reservation WHERE (startDate <= " + start
-//                        + " AND endDate >= " + end
-//                        + ") OR (startDate >= " + start + " AND startDate <= " + end
-//                        + " AND endDate >= " + end
-//                        + ") OR (startDate >= " + start + " AND endDate <= " + end + ")" +
-//                        "OR (startDate <= " + start + " AND endDate <= " + end + " AND endDate >= " + start + ");";
-//                    SQLiteDataReader reader = cmd.ExecuteReader();
-//                    List<int> idlist = new List<int>();
-//                    while (reader.Read())
-//                    {
-//                        int vid = reader.GetInt32(0);
-//                        idlist.Add(vid);
-//                    }
-//                    reader.Close();
-//                    conn.Close();
-//                    for (int i = 0; i < idlist.Count; i++)
-//                    {
-//                        for (int j = 0; j < V.Count; j++)
-//                        {
-//                            if (idlist[i] == V[j].GetVid())
-//                            {
-//                                V.RemoveAt(j);
-//                            }
-//                        }
-//                    }
-//                    return V;
-//                }
-//            }
-//        }
-//    }
