@@ -41,42 +41,42 @@
             // 
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.welcomeLabel.Location = new System.Drawing.Point(52, 27);
+            this.welcomeLabel.Location = new System.Drawing.Point(15, 17);
             this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(1298, 118);
+            this.welcomeLabel.Size = new System.Drawing.Size(544, 50);
             this.welcomeLabel.TabIndex = 0;
             this.welcomeLabel.Text = "Welcome to the Auction House!";
             // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(81, 124);
+            this.usernameLabel.Location = new System.Drawing.Point(44, 114);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(291, 74);
+            this.usernameLabel.Size = new System.Drawing.Size(122, 31);
             this.usernameLabel.TabIndex = 1;
             this.usernameLabel.Text = "Username:";
             // 
             // usernameTextbox
             // 
-            this.usernameTextbox.Location = new System.Drawing.Point(209, 121);
+            this.usernameTextbox.Location = new System.Drawing.Point(172, 111);
             this.usernameTextbox.Name = "usernameTextbox";
-            this.usernameTextbox.Size = new System.Drawing.Size(339, 81);
+            this.usernameTextbox.Size = new System.Drawing.Size(339, 38);
             this.usernameTextbox.TabIndex = 1;
             // 
             // passwordTextbox
             // 
-            this.passwordTextbox.Location = new System.Drawing.Point(209, 187);
+            this.passwordTextbox.Location = new System.Drawing.Point(172, 177);
             this.passwordTextbox.Name = "passwordTextbox";
             this.passwordTextbox.PasswordChar = '●';
-            this.passwordTextbox.Size = new System.Drawing.Size(339, 81);
+            this.passwordTextbox.Size = new System.Drawing.Size(339, 38);
             this.passwordTextbox.TabIndex = 2;
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(81, 190);
+            this.passwordLabel.Location = new System.Drawing.Point(44, 180);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(274, 74);
+            this.passwordLabel.Size = new System.Drawing.Size(115, 31);
             this.passwordLabel.TabIndex = 3;
             this.passwordLabel.Text = "Password:";
             // 
@@ -84,9 +84,9 @@
             // 
             this.loginButton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.loginButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.loginButton.Location = new System.Drawing.Point(253, 290);
+            this.loginButton.Location = new System.Drawing.Point(196, 232);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(211, 113);
+            this.loginButton.Size = new System.Drawing.Size(211, 54);
             this.loginButton.TabIndex = 4;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = false;
@@ -96,18 +96,18 @@
             // 
             this.failedLoginLabel.AutoSize = true;
             this.failedLoginLabel.ForeColor = System.Drawing.Color.Red;
-            this.failedLoginLabel.Location = new System.Drawing.Point(99, 242);
+            this.failedLoginLabel.Location = new System.Drawing.Point(62, 232);
             this.failedLoginLabel.Name = "failedLoginLabel";
             this.failedLoginLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.failedLoginLabel.Size = new System.Drawing.Size(0, 74);
+            this.failedLoginLabel.Size = new System.Drawing.Size(0, 31);
             this.failedLoginLabel.TabIndex = 5;
             this.failedLoginLabel.Visible = false;
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(30F, 74F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1545, 718);
+            this.ClientSize = new System.Drawing.Size(560, 300);
             this.Controls.Add(this.failedLoginLabel);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordTextbox);
@@ -117,6 +117,7 @@
             this.Controls.Add(this.welcomeLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5);
+            this.MinimumSize = new System.Drawing.Size(578, 347);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
