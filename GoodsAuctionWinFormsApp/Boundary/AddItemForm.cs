@@ -7,6 +7,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
         public AddItemForm()
         {
             InitializeComponent();
+            durationComboBox.SelectedIndex = 0;
         }
 
         private ItemList Item;

@@ -6,9 +6,11 @@ namespace GoodsAuctionWinFormsApp.Control
     {
         private Account username;
 
-        public void Logout()
+        public void logout(string username)
         {
-            //code here
+            // pass in username, return?
+            /* Account account = DBConnect.getUser();
+             */
         }
 
     }
