@@ -1,4 +1,6 @@
 ﻿using GoodsAuctionWinFormsApp.Entity;
+using GoodsAuctionWinFormsApp.Boundary;
+
 
 namespace GoodsAuctionWinFormsApp.Control
 {

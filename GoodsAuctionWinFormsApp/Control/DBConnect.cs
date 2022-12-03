@@ -72,7 +72,16 @@ namespace GoodsAuctionWinFormsApp.Control
                 "                                          , password" +
                 "                                          , type) VALUES ('','','')";
             sqliteCommand.ExecuteNonQuery();
-
+            sqliteCommand.CommandText = "INSERT INTO ACCOUNT(username" +
+                "                                          , password" +
+                "                                          , type) VALUES ('auctioneer@email.com'," +
+                "                                          'Password1','auctioneer')";
+            sqliteCommand.ExecuteNonQuery();
+            sqliteCommand.CommandText = "INSERT INTO ACCOUNT(username" +
+                "                                          , password" +
+                "                                          , type) VALUES ('bidder@email.com'," +
+                "                                          'Password1','bidder')";
+            sqliteCommand.ExecuteNonQuery();
             sqliteCommand.CommandText = "INSERT INTO ITEM(itemId" +
                 "                                         ,itemName" +
                 "                                         ,itemDescription" +
