@@ -19,21 +19,43 @@ namespace GoodsAuctionWinFormsApp.Control
         {
             //login
             //The return bool is for success or failure of the login
+            Account loginAccount;
 
+            loginAccount = DBConnect.getUser(username);
+            bool success = validate(loginAccount);
+            bool pwAccept = checkPassword(loginAccount, password);
 
-            //This is going to store the current user in the 'un' variable, so it can be used for logout & placebid
-            un = username;
+            if (success && pwAccept)
+            {
+                if (loginAccount.getType())
+                    new AddItemMenu();
+                else
+                    new PlaceBidMenu();
+                return true;
+            }
+            else
+            {
+                return false;
 
-            return false;
+            }
         }
 
-        public bool validate(Account a)
+
+        public static bool validate(Account a)
         {
             //test for validation of account
-            return false;
+            //ANTI SQL-STUFF
+            return true;
         }
 
 
+        public static bool checkPassword(Account a, string password)
+        {
+            if(password.GetHashCode() == a.getPassword())
+                return true;
+            else
+                return false;
+        }
   
     }
 }
