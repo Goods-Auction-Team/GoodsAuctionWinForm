@@ -1,12 +1,15 @@
 ﻿using GoodsAuctionWinFormsApp.Boundary;
 using GoodsAuctionWinFormsApp.Entity;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.Data;
 using System.Data.SQLite;
 
 namespace GoodsAuctionWinFormsApp.Control
 {
-    public static class DBConnect
+    public class DBConnect : Controller
     {
+        
         public static void InitDB()
         {
             using (SQLiteConnection conn = new SQLiteConnection(@"data source = nAuctionDb.db"))
@@ -65,10 +68,10 @@ namespace GoodsAuctionWinFormsApp.Control
             }
         }
       public static void InsertData(SQLiteConnection conn)
-        {
+      {
             SQLiteCommand sqliteCommand;
             sqliteCommand = conn.CreateCommand();
-            sqliteCommand.CommandText = "INSERT INTO ACCOUT(username" +
+            sqliteCommand.CommandText = "INSERT INTO ACCOUNT(username" +
                 "                                          , password" +
                 "                                          , type) VALUES ('','','')";
             sqliteCommand.ExecuteNonQuery();
@@ -102,9 +105,9 @@ namespace GoodsAuctionWinFormsApp.Control
     "                                          , BuyerNo" +
     "                                          , Amount) VALUES ('','','')";
             sqliteCommand.ExecuteNonQuery();
-        }
+      }
       public static void ReadData(SQLiteConnection conn)
-        {
+      {
             SQLiteDataReader sqliteReader;
             SQLiteCommand sqliteCommand;
             sqliteCommand=conn.CreateCommand();
@@ -135,62 +138,66 @@ namespace GoodsAuctionWinFormsApp.Control
             {
                 string readerstring = sqliteReader.GetString(0);
             }
+      }
+        public static Account GetUser(string username)
+        {
+            Account account = null;
+
+            
+            return account;
         }
-   
-        
-//Joy's code
-      //public class DBConnect : Controller
-      //  {
-      //      private Account user;
-      //      private Item itemID;
-      //      private ItemList item;
-      //      private Account username;
-                        
-      //      public DBConnect(Account username)
-      //      {
-      //          this.username = username;
-      //      }
 
-      //      public Account getUser()
-      //      {
-      //          return username;
-      //      }
-      //      public void saveLogout(Account username)
-      //      {
-      //          this.username = username;
-      //      }
 
-      //      public Item getItem(Item itemID)
-      //      {
-      //          //This item ID returns the item
-      //          return null;
-      //      }
+        //Joy's code
+        //public class DBConnect : Controller
+        //  {
+        //      private Account user;
+        //      private Item itemID;
+        //      private ItemList item;
+        //      private Account username;
 
-      //      public ItemList modifyItem(Item itemID, string newBid, Account username)
-      //      {
-      //          return null;//This is the placebid where it updates the item after bid and 
-      //                      //returns ItemList
-      //          return null;
-      //      }
+        //      public DBConnect(Account username)
+        //      {
+        //          this.username = username;
+        //      }
+        //      
+        //      }
+        //      public void saveLogout(Account username)
+        //      {
+        //          this.username = username;
+        //      }
 
-      //      public ItemList saveItem(Item item)
-      //      {
-      //          //This is the addItem where the data is saved
-      //          return null;
-      //      }
+        //      public Item getItem(Item itemID)
+        //      {
+        //          //This item ID returns the item
+        //          return null;
+        //      }
 
-      //      // adding saveLogout(un) from sequence diagram
-      //      public bool saveLogout(string username)
-      //      {
-      //          // not sure if this is right, but I'm trying to check if it saved correctly
-      //          // if true, sends it back to LoginForm for (logged out sucess)
-      //          if (username != null)
-      //          {
-      //              return true;
-      //          }
-      //          else { return false; }
-      //      }
-      //  }
+        //      public ItemList modifyItem(Item itemID, string newBid, Account username)
+        //      {
+        //          return null;//This is the placebid where it updates the item after bid and 
+        //                      //returns ItemList
+        //          return null;
+        //      }
+
+        //      public ItemList saveItem(Item item)
+        //      {
+        //          //This is the addItem where the data is saved
+        //          return null;
+        //      }
+
+        //      // adding saveLogout(un) from sequence diagram
+        //      public bool saveLogout(string username)
+        //      {
+        //          // not sure if this is right, but I'm trying to check if it saved correctly
+        //          // if true, sends it back to LoginForm for (logged out sucess)
+        //          if (username != null)
+        //          {
+        //              return true;
+        //          }
+        //          else { return false; }
+        //      }
+        //  }
     }
 }
 

@@ -10,20 +10,10 @@ namespace GoodsAuctionWinFormsApp.Control
 
         private static string un = "No User";
 
-        public static string GetUser()
+        
+        public static bool Login(string username, string password)
         {
-            return un;
-        }
-
-        public static bool login(string username, string password)
-        {
-            //login
-            //The return bool is for success or failure of the login
-
-
-            //This is going to store the current user in the 'un' variable, so it can be used for logout & placebid
-            un = username;
-
+            username = DBConnect.GetUser(
             return false;
         }
 

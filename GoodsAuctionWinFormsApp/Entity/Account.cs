@@ -6,7 +6,7 @@ namespace GoodsAuctionWinFormsApp.Entity
     {
         private string username, password, type;
 
-        public string getUsername()
+        public string GetUsername()
         {
             return username;
         }

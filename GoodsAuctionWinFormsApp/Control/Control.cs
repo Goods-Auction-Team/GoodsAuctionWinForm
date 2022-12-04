@@ -1,4 +1,5 @@
 ﻿using GoodsAuctionWinFormsApp.Boundary;
+
 namespace GoodsAuctionWinFormsApp.Control
 {
     public class Controller
