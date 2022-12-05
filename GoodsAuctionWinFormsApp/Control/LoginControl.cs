@@ -17,7 +17,6 @@ namespace GoodsAuctionWinFormsApp.Control
 
         public static bool login(string username, string password)
         {
-            //login
             //The return bool is for success or failure of the login
             Account loginAccount;
 
@@ -36,25 +35,34 @@ namespace GoodsAuctionWinFormsApp.Control
             else
             {
                 return false;
-
             }
         }
-
 
         public static bool validate(Account a)
         {
             //test for validation of account
             //ANTI SQL-STUFF
-            return true;
-        }
 
+            if (a != null && /* a is in DB?*/)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }            
+        }
 
         public static bool checkPassword(Account a, string password)
         {
             if(password.GetHashCode() == a.getPassword())
+            {
                 return true;
+            } 
             else
+            {
                 return false;
+            }
         }
   
     }

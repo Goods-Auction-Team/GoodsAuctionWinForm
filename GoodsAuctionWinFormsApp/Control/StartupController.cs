@@ -8,13 +8,13 @@ namespace GoodsAuctionWinFormsApp.Control
     {
         public void Initiate()
         {
-
             // call initDB 
             DBConnect.InitDB();
 
-            // open login form?
-            addForm(new LoginForm());
-
+            // open login form
+            // addForm(new LoginForm());
+            Form login = new LoginForm(); //create form?
+            login.ShowDialog(); //display login form?
         }
     }
 }

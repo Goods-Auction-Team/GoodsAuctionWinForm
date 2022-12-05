@@ -5,6 +5,7 @@ namespace GoodsAuctionWinFormsApp.Control
 {
     public class PlaceBidControl : Controller
     {
+
         /*private PlaceBidMenu pbm;
 
         public PlaceBidControl(PlaceBidMenu pbm)
@@ -14,6 +15,7 @@ namespace GoodsAuctionWinFormsApp.Control
 
 
         private Item itemID;
+
         public Item getItem(int itemID)
         {
             return null;
