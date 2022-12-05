@@ -30,6 +30,7 @@ namespace GoodsAuctionWinFormsApp.Control
                 {
                     AddItemMenu newMenu = new AddItemMenu();
                     newMenu.Show();
+                    newMenu.refresh(StartupController.iList);
                 }
                 else
                 {

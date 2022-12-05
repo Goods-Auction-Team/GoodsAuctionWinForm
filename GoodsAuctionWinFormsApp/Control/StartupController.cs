@@ -11,6 +11,7 @@ namespace GoodsAuctionWinFormsApp.Control
 
         public static LoginForm login = new LoginForm();
         public static Account andrewAccount = new Account();
+        public static Account jeffAccount = new Account();
         public static Item item1 = new Item();
         public static Item item2 = new Item();
         public static ItemList iList = new ItemList();
@@ -24,6 +25,9 @@ namespace GoodsAuctionWinFormsApp.Control
 
             andrewAccount.SetPassword("password".GetHashCode());
             andrewAccount.SetUsername("Andrew");
+
+            jeffAccount.SetPassword("time".GetHashCode());
+            jeffAccount.SetUsername("jeff");
 
             item1.setItemDescription("Mega Pie!");
             item1.setItemID(1);

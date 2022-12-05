@@ -32,7 +32,7 @@ namespace GoodsAuctionWinFormsApp.Entity
         {
             //true = auctioneer
             //false = bidder
-            return false;
+            return true;
         }
 
         public void SetLastLogin(DateTime datetime)

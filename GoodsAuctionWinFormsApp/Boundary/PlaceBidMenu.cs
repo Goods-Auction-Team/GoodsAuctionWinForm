@@ -13,36 +13,29 @@ namespace GoodsAuctionWinFormsApp.Boundary
         public PlaceBidMenu()
         {
             InitializeComponent();
-            itemSelector.DataSource = itemIDNumbers;
         }
 
         public void refresh(ItemList list)
         {
             currentItems = list;
 
+            int num = 0;
+            string[] row = new string[5];
+            itemSelector.Items.Clear();
+
             foreach (Item i in list)
             {
-                //populates
-                currentItemsListView.Items.Add(i.getItemID().ToString(), 0);
-                currentItemsListView.Items.Add(i.getItemName().ToString(), 1);
-                currentItemsListView.Items.Add(i.getCurrentBid().ToString(), 2);
-                currentItemsListView.Items.Add(i.getCurrentLeader(), 3);
-                currentItemsListView.Items.Add(i.getTimeRemaining().ToString(), 4);
-                //adds the ID to the dropdown
-                itemIDNumbers.Add(i.getItemID());
+
+                row[0] = i.getItemID().ToString();
+                row[1] = i.getItemName();
+                row[2] = i.getCurrentBid().ToString();
+                row[3] = i.getCurrentLeader(); 
+                row[4] = i.getTimeRemaining().ToString();
+
+                ItemListViewer.Rows.Add(row);
+
+                itemSelector.Items.Add(i.getItemID());
             }
-
-
-            //currentItemsListView.Items.Add(StartupController.item1.getItemID().ToString(), 0);
-            //currentItemsListView.Items.Add(StartupController.item1.getItemName(), 1);
-            //currentItemsListView.Items.Add(StartupController.item1.getCurrentBid().ToString(), 2);
-            //currentItemsListView.Items.Add(StartupController.item1.getCurrentLeader(), 3);
-            //currentItemsListView.Items.Add(StartupController.item1.getTimeRemaining().ToString(), 4);
-            //currentItemsListView.Items.Add(StartupController.item2.getItemID().ToString(), 0);
-            //currentItemsListView.Items.Add(StartupController.item2.getItemName(), 1);
-            //currentItemsListView.Items.Add(StartupController.item2.getCurrentBid().ToString(), 2);
-            //currentItemsListView.Items.Add(StartupController.item2.getCurrentLeader(), 3);
-            //currentItemsListView.Items.Add(StartupController.item2.getTimeRemaining().ToString(), 4);
 
         }
 
@@ -50,36 +43,50 @@ namespace GoodsAuctionWinFormsApp.Boundary
         {
             int bid;
             bool success = int.TryParse(newBidTextBox.Text, out bid);
-
+            int currentBid;
+            
             //ensures is a POSITIVE Int
-            if(success && bid > 0)
-            {
+           
+           
                 foreach (Item i in currentItems)
                 {
-                    if (itemSelector.SelectedIndex == i.getItemID())
+                if (itemSelector.Text == i.getItemID().ToString())
+                {
+
+                    bool greaterBid = PlaceBidControl.CheckBid(bid, i.getCurrentBid());
+                    if (success && greaterBid)
                     {
                         i.setCurrentBid(bid);
                         i.setCurrentLeader(LoginControl.getAccount().getUsername());
+                        newBidTextBox.BackColor = Color.White;
+                        ItemListViewer.Rows.Clear();
+
+                        PlaceBidControl.UpateDatabase(currentItems);
+                        refresh(StartupController.iList);
+                    }
+                    else
+                    {
+                        newBidTextBox.BackColor = Color.Red;
                     }
                 }
+               
+                
             }
+            
 
-            else
-            {
-                newBidTextBox.BackColor = Color.Red;
-            }
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //foreach(Item i in currentItems)
-            //{
-            //    if(itemSelector.SelectedIndex == i.getItemID())
-            //    {
-            //        selectItemLabel.Text = i.getItemName();
-            //        selectedDescriptionLabel.Text = i.getItemDescription();
-            //    }
-            //}
+            foreach (Item i in currentItems)
+            {
+                if (itemSelector.Text == i.getItemID().ToString())
+                {
+                    selectItemLabel.Text = i.getItemName();
+                    selectedDescriptionLabel.Text = i.getItemDescription();
+                }
+            }
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
@@ -88,6 +95,10 @@ namespace GoodsAuctionWinFormsApp.Boundary
             LogOutControl.logout(LoginControl.getAccount());
             this.Close();
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
         }
     }
 }

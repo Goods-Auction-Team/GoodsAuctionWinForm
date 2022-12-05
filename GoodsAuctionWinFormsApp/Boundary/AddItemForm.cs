@@ -13,36 +13,15 @@ namespace GoodsAuctionWinFormsApp.Boundary
             durationComboBox.DataSource = timeList;
         }
 
-        //When submit is clicked
-        //private void addItemButton_Click(object sender, EventArgs e)
-        //{
 
-        //    int startBid;
-        //    bool correct = int.TryParse(StartBidBox.Text, out startBid);
-
-        //    //Changes startBid to an int, but fails and turns the box Red if it cannot.
-        //    if (correct)
-        //    {
-        //        AddItemControl.insertNewItem(itemNameTextBox.Text, itemDescriptionTextBox.Text, startBid, durationComboBox.SelectedIndex);
-
-        //        System.Windows.Forms.Application.Exit();
-        //    }
-        //    else
-        //    {
-        //        StartBidBox.BackColor = Color.Red;
-        //    }
-
-
-        //}
-
-
-        //When button is clicked, Creates new item and sets initial values, checks for an int for starting bid but NOT for SQL
         private void addItemButton_Click(object sender, EventArgs e)
         {
             Item newItem = new Item();
 
             int startBid;
             bool correct = int.TryParse(StartBidBox.Text, out startBid);
+            if (startBid <= 0 || (itemNameTextBox.Text == ""))
+                correct = false;
             if (correct)
             {
 
@@ -59,9 +38,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
                 //if acceted, destroys window
                 if(succesfulAdd)
                 {
-                    failLabel.Visible = true;
-                    failLabel.Text = "SUCCESS";
-                    //this.Close();
+                    this.Close();
                 }
                 else
                 {
@@ -72,6 +49,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
             else
             {
                 StartBidBox.BackColor = Color.Red;
+                itemNameTextBox.BackColor = Color.Red;
             }
     
     
