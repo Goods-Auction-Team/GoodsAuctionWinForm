@@ -19,14 +19,14 @@ namespace GoodsAuctionWinFormsApp.Boundary
         //This populates the chart
         public void refresh(ItemList list)
         {   
-            foreach (Item i in list)
-            {
-                currentItemsListView.Items.Add(i.getItemID().ToString(), 0);
-                currentItemsListView.Items.Add(i.getItemID().ToString(), 1);
-                currentItemsListView.Items.Add(i.getCurrentBid().ToString(),2);
-                currentItemsListView.Items.Add(i.getCurrentLeader(),3);
-                currentItemsListView.Items.Add(i.getTimeRemaining().ToString(),4);
-            }
+            //foreach (Item i in list)
+            //{
+            //    currentItemsListView.Items.Add(i.getItemID().ToString(), 0);
+            //    currentItemsListView.Items.Add(i.getItemID().ToString(), 1);
+            //    currentItemsListView.Items.Add(i.getCurrentBid().ToString(),2);
+            //    currentItemsListView.Items.Add(i.getCurrentLeader(),3);
+            //    currentItemsListView.Items.Add(i.getTimeRemaining().ToString(),4);
+            //}
         }
 
         private void logoutButton_Click(object sender, EventArgs e)

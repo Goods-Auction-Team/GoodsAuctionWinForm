@@ -35,8 +35,8 @@ namespace GoodsAuctionWinFormsApp.Control
             item2.setItemDescription("Car go fast!");
             item2.setTimeRemaining((DateTime.Now).AddMinutes(5));
 
-            iList.addItem(item2);
-            iList.addItem(item1);
+            iList.Add(item1);
+            iList.Add(item2);
 
             Application.Run(login);
         }
