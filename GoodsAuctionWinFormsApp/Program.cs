@@ -16,8 +16,12 @@ namespace GoodsAuctionWinFormsApp
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Form loginForm = new LoginForm();
-            Application.Run(loginForm);
-           // Application.Run(new AddItemMenu());
+
+
+            StartupController.Initiate();
+           
+            //Application.Run(loginForm);
+           //Application.Run(new AddItemMenu());
         }
     }
 }

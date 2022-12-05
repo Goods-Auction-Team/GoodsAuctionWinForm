@@ -18,7 +18,15 @@ namespace GoodsAuctionWinFormsApp.Entity
         {
             return ItemList1;
         }
+        public bool MoveNext()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void Reset()
+        {
+            throw new NotImplementedException();
+        }
         public IEnumerator<Item> GetEnumerator()
         {
             throw new NotImplementedException();

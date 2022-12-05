@@ -26,14 +26,20 @@ namespace GoodsAuctionWinFormsApp.Boundary
         //displays failed login.
         private void loginButton_Click_1(object sender, EventArgs e)
         {
+        
             bool success = Control.LoginControl.login(usernameTextbox.Text, passwordTextbox.Text);
+
             if (!success)
             {
                 failedLoginLabel.Text = "Login Failed-- Check Username/ Password!";
                 failedLoginLabel.Visible = true;
             }
             else
+            {
                 this.Hide();
+                usernameTextbox.Text = "";
+                passwordTextbox.Text = "";
+            }
         }
 
 

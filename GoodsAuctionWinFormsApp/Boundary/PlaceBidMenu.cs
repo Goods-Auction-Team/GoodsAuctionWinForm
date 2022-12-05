@@ -5,23 +5,17 @@ namespace GoodsAuctionWinFormsApp.Boundary
 {
     public partial class PlaceBidMenu : Form
     {
-        private ItemList currentItems;
+        private ItemList currentItems = StartupController.iList;
+
         private List<int> itemIDNumbers = new List<int>();
+
+
         public PlaceBidMenu()
         {
             InitializeComponent();
             itemSelector.DataSource = itemIDNumbers;
         }
  
-   
-        public void viewItem()
-        {
-
-        }
-        public void submit()
-        {
-
-        }
         public void refresh(ItemList list)
         {
             currentItems = list;
@@ -51,10 +45,11 @@ namespace GoodsAuctionWinFormsApp.Boundary
                     if (itemSelector.SelectedIndex == i.getItemID())
                     {
                         i.setCurrentBid(bid);
-                        i.setCurrentLeader(LoginControl.GetUser());
+                        i.setCurrentLeader(LoginControl.getAccount().getUsername());
                     }
                 }
             }
+
             else
             {
                 newBidTextBox.BackColor = Color.Red;
@@ -71,6 +66,14 @@ namespace GoodsAuctionWinFormsApp.Boundary
                     selectedDescriptionLabel.Text = i.getItemDescription();
                 }
             }
+        }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+
+            LogOutControl.logout(LoginControl.getAccount());
+            this.Close();
+
         }
     }
 }

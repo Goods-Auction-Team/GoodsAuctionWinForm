@@ -31,9 +31,8 @@ namespace GoodsAuctionWinFormsApp.Boundary
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            LogOutControl.logout();
+            LogOutControl.logout(LoginControl.getAccount());
             this.Close();
-           
         }
 
         private void insertNewItemButton_Click(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace GoodsAuctionWinFormsApp.Boundary
 {
-    partial class AddItemMenu
+    partial class AddItemMenu 
     {
         /// <summary>
         /// Required designer variable.

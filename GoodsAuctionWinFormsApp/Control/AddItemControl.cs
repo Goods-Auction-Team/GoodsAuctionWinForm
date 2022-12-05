@@ -19,7 +19,7 @@ namespace GoodsAuctionWinFormsApp.Control
             return true;
         }
 
-        public void saveItem(Item)
+        public void saveItem(Item item)
         {
 
         }

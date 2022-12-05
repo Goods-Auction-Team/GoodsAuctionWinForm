@@ -59,7 +59,9 @@ namespace GoodsAuctionWinFormsApp.Boundary
                 //if acceted, destroys window
                 if(succesfulAdd)
                 {
-                    this.Close();
+                    failLabel.Visible = true;
+                    failLabel.Text = "SUCCESS";
+                    //this.Close();
                 }
                 else
                 {
