@@ -59,7 +59,7 @@
             // selectItemLabel
             // 
             this.selectItemLabel.AutoSize = true;
-            this.selectItemLabel.Location = new System.Drawing.Point(413, 355);
+            this.selectItemLabel.Location = new System.Drawing.Point(655, 355);
             this.selectItemLabel.Name = "selectItemLabel";
             this.selectItemLabel.Size = new System.Drawing.Size(234, 31);
             this.selectItemLabel.TabIndex = 3;
@@ -68,7 +68,7 @@
             // selectedDescriptionLabel
             // 
             this.selectedDescriptionLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.selectedDescriptionLabel.Location = new System.Drawing.Point(87, 404);
+            this.selectedDescriptionLabel.Location = new System.Drawing.Point(258, 410);
             this.selectedDescriptionLabel.Name = "selectedDescriptionLabel";
             this.selectedDescriptionLabel.Size = new System.Drawing.Size(451, 183);
             this.selectedDescriptionLabel.TabIndex = 4;
@@ -76,7 +76,7 @@
             // 
             // newBidTextBox
             // 
-            this.newBidTextBox.Location = new System.Drawing.Point(200, 610);
+            this.newBidTextBox.Location = new System.Drawing.Point(344, 611);
             this.newBidTextBox.Name = "newBidTextBox";
             this.newBidTextBox.Size = new System.Drawing.Size(240, 38);
             this.newBidTextBox.TabIndex = 5;
@@ -84,7 +84,7 @@
             // newBidLabel
             // 
             this.newBidLabel.AutoSize = true;
-            this.newBidLabel.Location = new System.Drawing.Point(27, 613);
+            this.newBidLabel.Location = new System.Drawing.Point(84, 613);
             this.newBidLabel.Name = "newBidLabel";
             this.newBidLabel.Size = new System.Drawing.Size(167, 31);
             this.newBidLabel.TabIndex = 6;
@@ -92,7 +92,7 @@
             // 
             // placeBidButton
             // 
-            this.placeBidButton.Location = new System.Drawing.Point(446, 610);
+            this.placeBidButton.Location = new System.Drawing.Point(702, 610);
             this.placeBidButton.Name = "placeBidButton";
             this.placeBidButton.Size = new System.Drawing.Size(133, 38);
             this.placeBidButton.TabIndex = 7;
@@ -103,7 +103,7 @@
             // logoutButton
             // 
             this.logoutButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.logoutButton.Location = new System.Drawing.Point(571, 654);
+            this.logoutButton.Location = new System.Drawing.Point(810, 654);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(79, 35);
             this.logoutButton.TabIndex = 8;
@@ -114,7 +114,7 @@
             // itemSelector
             // 
             this.itemSelector.FormattingEnabled = true;
-            this.itemSelector.Location = new System.Drawing.Point(242, 352);
+            this.itemSelector.Location = new System.Drawing.Point(397, 352);
             this.itemSelector.Name = "itemSelector";
             this.itemSelector.Size = new System.Drawing.Size(151, 39);
             this.itemSelector.TabIndex = 9;
@@ -131,6 +131,7 @@
             // 
             // ItemListViewer
             // 
+            this.ItemListViewer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ItemListViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemListViewer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemID,
@@ -138,11 +139,12 @@
             this.CurrentBid,
             this.CurrentLeader,
             this.EndTime});
-            this.ItemListViewer.Location = new System.Drawing.Point(-4, 75);
+            this.ItemListViewer.Location = new System.Drawing.Point(12, 75);
             this.ItemListViewer.Name = "ItemListViewer";
+            this.ItemListViewer.ReadOnly = true;
             this.ItemListViewer.RowHeadersWidth = 51;
             this.ItemListViewer.RowTemplate.Height = 29;
-            this.ItemListViewer.Size = new System.Drawing.Size(654, 227);
+            this.ItemListViewer.Size = new System.Drawing.Size(972, 227);
             this.ItemListViewer.TabIndex = 11;
             this.ItemListViewer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -152,7 +154,6 @@
             this.ItemID.MinimumWidth = 6;
             this.ItemID.Name = "ItemID";
             this.ItemID.ReadOnly = true;
-            this.ItemID.Width = 125;
             // 
             // ItemName
             // 
@@ -160,7 +161,6 @@
             this.ItemName.MinimumWidth = 6;
             this.ItemName.Name = "ItemName";
             this.ItemName.ReadOnly = true;
-            this.ItemName.Width = 125;
             // 
             // CurrentBid
             // 
@@ -168,7 +168,6 @@
             this.CurrentBid.MinimumWidth = 6;
             this.CurrentBid.Name = "CurrentBid";
             this.CurrentBid.ReadOnly = true;
-            this.CurrentBid.Width = 125;
             // 
             // CurrentLeader
             // 
@@ -176,7 +175,6 @@
             this.CurrentLeader.MinimumWidth = 6;
             this.CurrentLeader.Name = "CurrentLeader";
             this.CurrentLeader.ReadOnly = true;
-            this.CurrentLeader.Width = 125;
             // 
             // EndTime
             // 
@@ -184,13 +182,12 @@
             this.EndTime.MinimumWidth = 6;
             this.EndTime.Name = "EndTime";
             this.EndTime.ReadOnly = true;
-            this.EndTime.Width = 125;
             // 
             // PlaceBidMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 701);
+            this.ClientSize = new System.Drawing.Size(996, 701);
             this.Controls.Add(this.ItemListViewer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.itemSelector);

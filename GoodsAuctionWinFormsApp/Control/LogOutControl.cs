@@ -17,7 +17,12 @@ namespace GoodsAuctionWinFormsApp.Control
             /* Account account = DBConnect.getUser();
              */
 
+            DBConnect.UpdateLastLogout(a);
             StartupController.login.Show();
+            StartupController.login.setLoggedOut();
+            
+
+
         }
 
     }

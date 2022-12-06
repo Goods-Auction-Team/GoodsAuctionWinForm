@@ -16,15 +16,13 @@ namespace GoodsAuctionWinFormsApp.Control
 
         private Item itemID;
 
-        public Item getItem(int itemID)
-        {
-            return null;
-        }
 
-        public static void UpateDatabase(ItemList update) {
+        public static void UpateDatabase(ItemList update, Item i) {
             //This should be for the database
 
             StartupController.iList = update;
+            DBConnect.UpdateBids(i, LoginControl.getAccount());
+            DBConnect.UpdateItemDatabase(StartupController.iList);
         }
 
         public static bool CheckBid(int bid, int currentBid)

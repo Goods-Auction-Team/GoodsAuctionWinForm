@@ -20,7 +20,11 @@ namespace GoodsAuctionWinFormsApp.Control
         {
             //The return bool is for success or failure of the login
 
-            loginAccount = StartupController.andrewAccount;
+            //loginAccount = StartupController.andrewAccount;
+            loginAccount = DBConnect.findAccount(username);
+
+            if (loginAccount == null)
+                return false;
             bool success = validate(loginAccount);
             bool pwAccept = checkPassword(loginAccount, password);
 
@@ -53,16 +57,14 @@ namespace GoodsAuctionWinFormsApp.Control
             //test for validation of account
             //ANTI SQL-STUFF
 
-            return true;
 
-            //if (a != null /* &&  a is in DB?*/ )
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}            
+
+            // MUST contain EXACTLY 1 @, >= 1 .
+            // NO   +, $, /,\, ', {,},&
+
+
+
+            return true;
         }
 
 

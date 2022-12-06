@@ -50,6 +50,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
             {
                 StartBidBox.BackColor = Color.Red;
                 itemNameTextBox.BackColor = Color.Red;
+                failLabel.Visible= true;
             }
     
     
