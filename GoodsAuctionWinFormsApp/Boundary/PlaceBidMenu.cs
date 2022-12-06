@@ -15,6 +15,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
             InitializeComponent();
         }
 
+
         public void refresh(ItemList list)
         {
             currentItems = list;
@@ -50,28 +51,28 @@ namespace GoodsAuctionWinFormsApp.Boundary
            
                 foreach (Item i in currentItems)
                 {
-                if (itemSelector.Text == i.getItemID().ToString())
-                {
-
-                    bool greaterBid = PlaceBidControl.CheckBid(bid, i.getCurrentBid());
-                    if (success && greaterBid)
+                    if (itemSelector.Text == i.getItemID().ToString())
                     {
-                        i.setCurrentBid(bid);
-                        i.setCurrentLeader(LoginControl.getAccount().getUsername());
-                        newBidTextBox.BackColor = Color.White;
-                        ItemListViewer.Rows.Clear();
 
-                        PlaceBidControl.UpateDatabase(currentItems);
-                        refresh(StartupController.iList);
+                        bool greaterBid = PlaceBidControl.CheckBid(bid, i.getCurrentBid());
+                        if (success && greaterBid)
+                        {
+                            i.setCurrentBid(bid);
+                            i.setCurrentLeader(LoginControl.getAccount().getUsername());
+                            newBidTextBox.BackColor = Color.White;
+                            ItemListViewer.Rows.Clear();
+
+                            PlaceBidControl.UpateDatabase(currentItems, i);
+                            refresh(StartupController.iList);
+                        }
+                        else
+                        {
+                            newBidTextBox.BackColor = Color.Red;
+                        }
                     }
-                    else
-                    {
-                        newBidTextBox.BackColor = Color.Red;
-                    }
-                }
                
                 
-            }
+             }
             
 
             

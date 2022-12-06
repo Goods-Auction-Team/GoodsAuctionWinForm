@@ -43,7 +43,7 @@
             // currentItemsLabel
             // 
             this.currentItemsLabel.AutoSize = true;
-            this.currentItemsLabel.Location = new System.Drawing.Point(215, 30);
+            this.currentItemsLabel.Location = new System.Drawing.Point(267, 31);
             this.currentItemsLabel.Name = "currentItemsLabel";
             this.currentItemsLabel.Size = new System.Drawing.Size(237, 31);
             this.currentItemsLabel.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             // insertNewItemButton
             // 
-            this.insertNewItemButton.Location = new System.Drawing.Point(234, 342);
+            this.insertNewItemButton.Location = new System.Drawing.Point(299, 342);
             this.insertNewItemButton.Name = "insertNewItemButton";
             this.insertNewItemButton.Size = new System.Drawing.Size(194, 55);
             this.insertNewItemButton.TabIndex = 2;
@@ -72,6 +72,7 @@
             // 
             // ItemListViewer
             // 
+            this.ItemListViewer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ItemListViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemListViewer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemID,
@@ -83,7 +84,7 @@
             this.ItemListViewer.Name = "ItemListViewer";
             this.ItemListViewer.RowHeadersWidth = 51;
             this.ItemListViewer.RowTemplate.Height = 29;
-            this.ItemListViewer.Size = new System.Drawing.Size(654, 227);
+            this.ItemListViewer.Size = new System.Drawing.Size(779, 227);
             this.ItemListViewer.TabIndex = 12;
             // 
             // ItemID
@@ -92,7 +93,6 @@
             this.ItemID.MinimumWidth = 6;
             this.ItemID.Name = "ItemID";
             this.ItemID.ReadOnly = true;
-            this.ItemID.Width = 125;
             // 
             // ItemName
             // 
@@ -100,7 +100,6 @@
             this.ItemName.MinimumWidth = 6;
             this.ItemName.Name = "ItemName";
             this.ItemName.ReadOnly = true;
-            this.ItemName.Width = 125;
             // 
             // CurrentBid
             // 
@@ -108,7 +107,6 @@
             this.CurrentBid.MinimumWidth = 6;
             this.CurrentBid.Name = "CurrentBid";
             this.CurrentBid.ReadOnly = true;
-            this.CurrentBid.Width = 125;
             // 
             // CurrentLeader
             // 
@@ -116,7 +114,6 @@
             this.CurrentLeader.MinimumWidth = 6;
             this.CurrentLeader.Name = "CurrentLeader";
             this.CurrentLeader.ReadOnly = true;
-            this.CurrentLeader.Width = 125;
             // 
             // EndTime
             // 
@@ -124,13 +121,12 @@
             this.EndTime.MinimumWidth = 6;
             this.EndTime.Name = "EndTime";
             this.EndTime.ReadOnly = true;
-            this.EndTime.Width = 125;
             // 
             // AddItemMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 439);
+            this.ClientSize = new System.Drawing.Size(792, 439);
             this.Controls.Add(this.ItemListViewer);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.insertNewItemButton);

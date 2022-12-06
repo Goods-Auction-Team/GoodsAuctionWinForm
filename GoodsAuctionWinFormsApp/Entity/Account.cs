@@ -7,6 +7,7 @@ namespace GoodsAuctionWinFormsApp.Entity
         private string username;
         private int password;
         private static DateTime lastLogin;
+        private bool type;
 
         public string GetUsername()
         {
@@ -32,7 +33,12 @@ namespace GoodsAuctionWinFormsApp.Entity
         {
             //true = auctioneer
             //false = bidder
-            return true;
+            return type;
+        }
+
+        public void SetType(bool newType)
+        {
+            type = newType;
         }
 
         public void SetLastLogin(DateTime datetime)

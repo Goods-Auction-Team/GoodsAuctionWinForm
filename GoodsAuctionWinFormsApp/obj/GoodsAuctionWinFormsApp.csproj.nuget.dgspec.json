@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\joywi\\source\\repos\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj": {}
+    "C:\\Users\\Wang Ho Chiu\\Desktop\\Goods\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joywi\\source\\repos\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj": {
+    "C:\\Users\\Wang Ho Chiu\\Desktop\\Goods\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joywi\\source\\repos\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj",
+        "projectUniqueName": "C:\\Users\\Wang Ho Chiu\\Desktop\\Goods\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj",
         "projectName": "GoodsAuctionWinFormsApp",
-        "projectPath": "C:\\Users\\joywi\\source\\repos\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj",
-        "packagesPath": "C:\\Users\\joywi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joywi\\source\\repos\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\obj\\",
+        "projectPath": "C:\\Users\\Wang Ho Chiu\\Desktop\\Goods\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj",
+        "packagesPath": "C:\\Users\\Wang Ho Chiu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Wang Ho Chiu\\Desktop\\Goods\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\joywi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Wang Ho Chiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -46,10 +45,6 @@
           "targetAlias": "net6.0-windows",
           "dependencies": {
             "Microsoft.Data.Sqlite.Core": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.0, )"
             },

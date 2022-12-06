@@ -14,6 +14,7 @@ namespace GoodsAuctionWinFormsApp.Entity
         private string currentLeader;
         private Account username;
 
+        public int ItemID { get { return itemID;} }
         public int getItemID()
         {
             return this.itemID;

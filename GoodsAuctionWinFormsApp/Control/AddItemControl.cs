@@ -5,17 +5,19 @@ namespace GoodsAuctionWinFormsApp.Control
 {
     public class AddItemControl : Controller
     {
-        private Item Item; //not sure if this is correct
-
-        public static void insertNewItem(string itemName, string itemDescription, int startBid, int duration)
-        {
-            // this is suppose call AddItemForm and create the form?
-        }
 
         public static bool Submit(Item item)
         {
-            StartupController.iList.Add(item);
 
+            if (!validate(item.getItemName()) || !validate(item.getItemDescription()))
+                return false;
+
+            //This should be used in hardcoding
+            item.setItemID( StartupController.nextID());
+
+
+            StartupController.iList.Add(item);
+            DBConnect.UpdateItemDatabase(StartupController.iList);
 
             AddItemMenu menu = new AddItemMenu();
             menu.refresh(StartupController.iList);
@@ -29,8 +31,20 @@ namespace GoodsAuctionWinFormsApp.Control
             AddItemForm form = new AddItemForm();
             form.Show();
         }
-        public void saveItem(Item item)
+
+        public static bool validate(string field)
         {
+            //test for validation of name&description
+            //ANTI SQL-STUFF
+
+
+            foreach (char c in field)
+            {
+                if (c == '+' || c == '$' || c == '/' || c == '\'' || c == '{' || c == '}' || c == '\\' || c == '[' || c == ']' || c == '*' || c == '%')
+                    return false;
+            }
+
+            return true;
 
         }
     }
