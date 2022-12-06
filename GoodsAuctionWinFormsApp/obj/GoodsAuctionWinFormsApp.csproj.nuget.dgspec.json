@@ -1,25 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj": {}
+    "C:\\Users\\joywi\\source\\repos\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj": {}
   },
   "projects": {
-    "D:\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj": {
+    "C:\\Users\\joywi\\source\\repos\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj",
+        "projectUniqueName": "C:\\Users\\joywi\\source\\repos\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj",
         "projectName": "GoodsAuctionWinFormsApp",
-        "projectPath": "D:\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj",
-        "packagesPath": "C:\\Users\\theda\\.nuget\\packages\\",
-        "outputPath": "D:\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\obj\\",
+        "projectPath": "C:\\Users\\joywi\\source\\repos\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\GoodsAuctionWinFormsApp.csproj",
+        "packagesPath": "C:\\Users\\joywi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\joywi\\source\\repos\\GoodsAuctionWinForm\\GoodsAuctionWinFormsApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\theda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\joywi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows7.0"
+          "net6.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -46,6 +49,10 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "System.Data.SQLite": {
               "target": "Package",
               "version": "[1.0.117, )"
@@ -57,7 +64,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -69,7 +77,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
