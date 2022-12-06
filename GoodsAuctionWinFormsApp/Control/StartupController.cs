@@ -9,10 +9,12 @@ namespace GoodsAuctionWinFormsApp.Control
     {
 
 
-        public static LoginForm login = new LoginForm();
+        public static LoginForm login;
        
         public static ItemList iList = new ItemList();
-
+    
+   
+       
 
         //this function should only be necessary for hardcoding
         public static int nextID()
@@ -28,17 +30,20 @@ namespace GoodsAuctionWinFormsApp.Control
             return id + 1;
         }
 
-
+        [STAThread]
         public static void Initiate()
         {
+         
             // call initDB 
-            //DBConnect.InitDB();
-
-
             DBConnect.InitDB();
+            ApplicationConfiguration.Initialize();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(true);
+            Application.Run(login = new LoginForm());
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
 
-
-            Application.Run(login);
         }
     }
 }
