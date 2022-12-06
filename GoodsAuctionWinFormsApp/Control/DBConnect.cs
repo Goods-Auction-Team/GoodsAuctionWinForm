@@ -241,12 +241,6 @@ namespace GoodsAuctionWinFormsApp.Control
                 return andrewAccount;
             if (Joy.getUsername() == username)
                  return Joy;
-
-
-
-            // return user;
-            //if (found)
-            //    return user;
             else
                 return null;
         }
@@ -267,5 +261,8 @@ namespace GoodsAuctionWinFormsApp.Control
         {
             //Saves Item Name, bid, and account's username
         }
+
+
+
     }
 }

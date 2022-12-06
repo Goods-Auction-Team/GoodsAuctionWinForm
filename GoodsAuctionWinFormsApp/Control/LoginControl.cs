@@ -20,15 +20,18 @@ namespace GoodsAuctionWinFormsApp.Control
         {
             //The return bool is for success or failure of the login
 
-            //loginAccount = StartupController.andrewAccount;
+
+            if(!validate(username))
+                return false;
+
             loginAccount = DBConnect.findAccount(username);
 
             if (loginAccount == null)
                 return false;
-            bool success = validate(loginAccount);
+            
             bool pwAccept = checkPassword(loginAccount, password);
 
-            if (success && pwAccept)
+            if (pwAccept)
             {
                 if (loginAccount.getType())
                 {
@@ -52,19 +55,27 @@ namespace GoodsAuctionWinFormsApp.Control
 
 
         //Need to Validate
-        public static bool validate(Account a)
+        public static bool validate(string username)
         {
             //test for validation of account
             //ANTI SQL-STUFF
+            int countAT = 0, countDOT = 0;
 
+            foreach (char c in username)
+            {
+                if (c == '+' || c == '$' || c == '/' || c == '\'' || c == '{' || c == '}' || c == '\\' || c == '[' || c == ']' || c == '*' || c == '%' || c == '&' || c == '!')
+                    return false;
 
-
-            // MUST contain EXACTLY 1 @, >= 1 .
-            // NO   +, $, /,\, ', {,},&
-
-
-
-            return true;
+                if (c == '@')
+                    countAT++;
+                if(c == '.')
+                    countDOT++;
+            }
+            if (countAT != 1 || countDOT == 0)
+                return false;
+            else
+                return true;
+            
         }
 
 

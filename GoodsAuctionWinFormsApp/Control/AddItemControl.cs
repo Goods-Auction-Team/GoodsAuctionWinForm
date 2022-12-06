@@ -8,6 +8,14 @@ namespace GoodsAuctionWinFormsApp.Control
 
         public static bool Submit(Item item)
         {
+
+            if (!validate(item.getItemName()) || !validate(item.getItemDescription()))
+                return false;
+
+            //This should be used in hardcoding
+            item.setItemID( StartupController.nextID());
+
+
             StartupController.iList.Add(item);
             DBConnect.UpdateItemDatabase(StartupController.iList);
 
@@ -24,5 +32,20 @@ namespace GoodsAuctionWinFormsApp.Control
             form.Show();
         }
 
+        public static bool validate(string field)
+        {
+            //test for validation of name&description
+            //ANTI SQL-STUFF
+
+
+            foreach (char c in field)
+            {
+                if (c == '+' || c == '$' || c == '/' || c == '\'' || c == '{' || c == '}' || c == '\\' || c == '[' || c == ']' || c == '*' || c == '%')
+                    return false;
+            }
+
+            return true;
+
+        }
     }
 }

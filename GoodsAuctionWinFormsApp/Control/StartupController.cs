@@ -10,9 +10,24 @@ namespace GoodsAuctionWinFormsApp.Control
 
 
         public static LoginForm login = new LoginForm();
-        public static Account jeffAccount = new Account();
        
         public static ItemList iList = new ItemList();
+
+
+        //this function should only be necessary for hardcoding
+        public static int nextID()
+        {
+            int id = 0;
+            foreach(Item i in iList)
+            {
+               if(i.getItemID() > id)
+                {
+                    id = i.getItemID();
+                }
+            }
+            return id + 1;
+        }
+
 
         public static void Initiate()
         {
@@ -21,10 +36,6 @@ namespace GoodsAuctionWinFormsApp.Control
 
 
             DBConnect.InitDB();
- 
-
-            jeffAccount.SetPassword("time".GetHashCode());
-            jeffAccount.SetUsername("jeff");
 
 
             Application.Run(login);
