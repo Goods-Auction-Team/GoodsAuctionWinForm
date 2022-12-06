@@ -8,8 +8,8 @@ namespace GoodsAuctionWinFormsApp.Entity
         private int itemID;
         private string itemName;
         private string itemDescription;
-        private float startingBid;
-        private float currentBid;
+        private int startingBid;
+        private int currentBid;
         private DateTime timeRemaining; //not sure if this is correct
         private string currentLeader;
         private Account username;
@@ -42,15 +42,15 @@ namespace GoodsAuctionWinFormsApp.Entity
         {
             return this.startingBid;
         }
-        public void setStartingBid(float startingBid)
+        public void setStartingBid(int startingBid)
         {
             this.startingBid = startingBid;
         }
-        public float getCurrentBid()
+        public int getCurrentBid()
         {
             return this.currentBid;
         }
-        public void setCurrentBid(float currentBid)
+        public void setCurrentBid(int currentBid)
         {
             this.currentBid = currentBid;
         }

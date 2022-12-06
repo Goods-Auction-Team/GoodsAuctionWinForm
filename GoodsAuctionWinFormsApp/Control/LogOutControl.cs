@@ -7,13 +7,17 @@ namespace GoodsAuctionWinFormsApp.Control
     {
         private Account username;
 
-        public static void logout()
+        public static void logout(Account a)
         {
+
+            a.SetLastLogin(DateTime.Now);
             //can pull UN from loginControl, rather than having the boundries hold the name
 
             // pass in username, return?
             /* Account account = DBConnect.getUser();
              */
+
+            StartupController.login.Show();
         }
 
     }

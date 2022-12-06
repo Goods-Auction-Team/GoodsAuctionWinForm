@@ -5,6 +5,7 @@ namespace GoodsAuctionWinFormsApp.Control
 {
     public class PlaceBidControl : Controller
     {
+
         /*private PlaceBidMenu pbm;
 
         public PlaceBidControl(PlaceBidMenu pbm)
@@ -14,16 +15,27 @@ namespace GoodsAuctionWinFormsApp.Control
 
 
         private Item itemID;
+
         public Item getItem(int itemID)
         {
             return null;
         }
 
-        public void submit(int newBid, string username, PlaceBidMenu pbm)
-        {
+        public static void UpateDatabase(ItemList update) {
+            //This should be for the database
 
-            //if bid went through, refresh itemlist in PlaceBidMenu
-            //pbm.refreshList();
+            StartupController.iList = update;
+        }
+
+        public static bool CheckBid(int bid, int currentBid)
+        {
+            if (bid > currentBid)
+            {
+
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

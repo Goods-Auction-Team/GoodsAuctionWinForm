@@ -1,6 +1,6 @@
 ﻿namespace GoodsAuctionWinFormsApp.Boundary
 {
-    partial class AddItemMenu
+    partial class AddItemMenu 
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.currentItemsLabel = new System.Windows.Forms.Label();
-            this.currentItemsListView = new System.Windows.Forms.ListView();
-            this.itemNameColumnHeader = new System.Windows.Forms.ColumnHeader();
-            this.currentBidColumnHeader = new System.Windows.Forms.ColumnHeader();
-            this.currentLeaderColumnHeader = new System.Windows.Forms.ColumnHeader();
-            this.timeRemainingColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.insertNewItemButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
-            this.ItemIDColumnHeader = new System.Windows.Forms.ColumnHeader();
+            this.ItemListViewer = new System.Windows.Forms.DataGridView();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentBid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentLeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemListViewer)).BeginInit();
             this.SuspendLayout();
             // 
             // currentItemsLabel
@@ -47,51 +48,6 @@
             this.currentItemsLabel.Size = new System.Drawing.Size(237, 31);
             this.currentItemsLabel.TabIndex = 0;
             this.currentItemsLabel.Text = "Current Auction Items";
-            // 
-            // currentItemsListView
-            // 
-            this.currentItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.itemNameColumnHeader,
-            this.currentBidColumnHeader,
-            this.currentLeaderColumnHeader,
-            this.timeRemainingColumnHeader,
-            this.ItemIDColumnHeader});
-            this.currentItemsListView.FullRowSelect = true;
-            this.currentItemsListView.GridLines = true;
-            this.currentItemsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.currentItemsListView.Location = new System.Drawing.Point(12, 80);
-            this.currentItemsListView.Name = "currentItemsListView";
-            this.currentItemsListView.Size = new System.Drawing.Size(637, 245);
-            this.currentItemsListView.TabIndex = 1;
-            this.currentItemsListView.UseCompatibleStateImageBehavior = false;
-            this.currentItemsListView.View = System.Windows.Forms.View.Details;
-            // 
-            // itemNameColumnHeader
-            // 
-            this.itemNameColumnHeader.DisplayIndex = 1;
-            this.itemNameColumnHeader.Text = "Item Name";
-            this.itemNameColumnHeader.Width = 150;
-            // 
-            // currentBidColumnHeader
-            // 
-            this.currentBidColumnHeader.DisplayIndex = 2;
-            this.currentBidColumnHeader.Text = "Current Bid";
-            this.currentBidColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.currentBidColumnHeader.Width = 130;
-            // 
-            // currentLeaderColumnHeader
-            // 
-            this.currentLeaderColumnHeader.DisplayIndex = 3;
-            this.currentLeaderColumnHeader.Text = "Current Leader";
-            this.currentLeaderColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.currentLeaderColumnHeader.Width = 170;
-            // 
-            // timeRemainingColumnHeader
-            // 
-            this.timeRemainingColumnHeader.DisplayIndex = 4;
-            this.timeRemainingColumnHeader.Text = "Time Remaining";
-            this.timeRemainingColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.timeRemainingColumnHeader.Width = 180;
             // 
             // insertNewItemButton
             // 
@@ -114,20 +70,70 @@
             this.logoutButton.UseVisualStyleBackColor = true;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
-            // ItemIDColumnHeader
+            // ItemListViewer
             // 
-            this.ItemIDColumnHeader.DisplayIndex = 0;
-            this.ItemIDColumnHeader.Text = "Item ID";
-            this.ItemIDColumnHeader.Width = 90;
+            this.ItemListViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ItemListViewer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ItemID,
+            this.ItemName,
+            this.CurrentBid,
+            this.CurrentLeader,
+            this.EndTime});
+            this.ItemListViewer.Location = new System.Drawing.Point(1, 89);
+            this.ItemListViewer.Name = "ItemListViewer";
+            this.ItemListViewer.RowHeadersWidth = 51;
+            this.ItemListViewer.RowTemplate.Height = 29;
+            this.ItemListViewer.Size = new System.Drawing.Size(654, 227);
+            this.ItemListViewer.TabIndex = 12;
+            // 
+            // ItemID
+            // 
+            this.ItemID.HeaderText = "ItemID";
+            this.ItemID.MinimumWidth = 6;
+            this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
+            this.ItemID.Width = 125;
+            // 
+            // ItemName
+            // 
+            this.ItemName.HeaderText = "Item Name";
+            this.ItemName.MinimumWidth = 6;
+            this.ItemName.Name = "ItemName";
+            this.ItemName.ReadOnly = true;
+            this.ItemName.Width = 125;
+            // 
+            // CurrentBid
+            // 
+            this.CurrentBid.HeaderText = "Current Bid";
+            this.CurrentBid.MinimumWidth = 6;
+            this.CurrentBid.Name = "CurrentBid";
+            this.CurrentBid.ReadOnly = true;
+            this.CurrentBid.Width = 125;
+            // 
+            // CurrentLeader
+            // 
+            this.CurrentLeader.HeaderText = "Current Leader";
+            this.CurrentLeader.MinimumWidth = 6;
+            this.CurrentLeader.Name = "CurrentLeader";
+            this.CurrentLeader.ReadOnly = true;
+            this.CurrentLeader.Width = 125;
+            // 
+            // EndTime
+            // 
+            this.EndTime.HeaderText = "End Time";
+            this.EndTime.MinimumWidth = 6;
+            this.EndTime.Name = "EndTime";
+            this.EndTime.ReadOnly = true;
+            this.EndTime.Width = 125;
             // 
             // AddItemMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(667, 439);
+            this.Controls.Add(this.ItemListViewer);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.insertNewItemButton);
-            this.Controls.Add(this.currentItemsListView);
             this.Controls.Add(this.currentItemsLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -135,6 +141,7 @@
             this.Name = "AddItemMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddItemMenu";
+            ((System.ComponentModel.ISupportInitialize)(this.ItemListViewer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,13 +150,13 @@
         #endregion
 
         private Label currentItemsLabel;
-        private ListView currentItemsListView;
-        private ColumnHeader itemNameColumnHeader;
-        private ColumnHeader currentBidColumnHeader;
-        private ColumnHeader currentLeaderColumnHeader;
-        private ColumnHeader timeRemainingColumnHeader;
         private Button insertNewItemButton;
         private Button logoutButton;
-        private ColumnHeader ItemIDColumnHeader;
+        private DataGridView ItemListViewer;
+        private DataGridViewTextBoxColumn ItemID;
+        private DataGridViewTextBoxColumn ItemName;
+        private DataGridViewTextBoxColumn CurrentBid;
+        private DataGridViewTextBoxColumn CurrentLeader;
+        private DataGridViewTextBoxColumn EndTime;
     }
 }

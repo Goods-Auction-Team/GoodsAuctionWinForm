@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.currentItemsListView = new System.Windows.Forms.ListView();
-            this.ItemIDHeader = new System.Windows.Forms.ColumnHeader();
-            this.itemNameColumnHeader = new System.Windows.Forms.ColumnHeader();
-            this.currentBidColumnHeader = new System.Windows.Forms.ColumnHeader();
-            this.currentLeaderColumnHeader = new System.Windows.Forms.ColumnHeader();
-            this.timeRemainingColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.selectItemLabel = new System.Windows.Forms.Label();
             this.selectedDescriptionLabel = new System.Windows.Forms.Label();
             this.newBidTextBox = new System.Windows.Forms.TextBox();
@@ -43,6 +37,13 @@
             this.logoutButton = new System.Windows.Forms.Button();
             this.itemSelector = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.ItemListViewer = new System.Windows.Forms.DataGridView();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentBid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentLeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemListViewer)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -54,52 +55,6 @@
             this.label1.Size = new System.Drawing.Size(334, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bid Away! Go Win Some STUFF!";
-            // 
-            // currentItemsListView
-            // 
-            this.currentItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ItemIDHeader,
-            this.itemNameColumnHeader,
-            this.currentBidColumnHeader,
-            this.currentLeaderColumnHeader,
-            this.timeRemainingColumnHeader});
-            this.currentItemsListView.FullRowSelect = true;
-            this.currentItemsListView.GridLines = true;
-            this.currentItemsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.currentItemsListView.Location = new System.Drawing.Point(12, 88);
-            this.currentItemsListView.Name = "currentItemsListView";
-            this.currentItemsListView.Size = new System.Drawing.Size(638, 245);
-            this.currentItemsListView.TabIndex = 2;
-            this.currentItemsListView.UseCompatibleStateImageBehavior = false;
-            this.currentItemsListView.View = System.Windows.Forms.View.Details;
-            // 
-            // ItemIDHeader
-            // 
-            this.ItemIDHeader.Text = "Item ID";
-            this.ItemIDHeader.Width = 90;
-            // 
-            // itemNameColumnHeader
-            // 
-            this.itemNameColumnHeader.Text = "Item Name";
-            this.itemNameColumnHeader.Width = 150;
-            // 
-            // currentBidColumnHeader
-            // 
-            this.currentBidColumnHeader.Text = "Current Bid";
-            this.currentBidColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.currentBidColumnHeader.Width = 130;
-            // 
-            // currentLeaderColumnHeader
-            // 
-            this.currentLeaderColumnHeader.Text = "Current Leader";
-            this.currentLeaderColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.currentLeaderColumnHeader.Width = 170;
-            // 
-            // timeRemainingColumnHeader
-            // 
-            this.timeRemainingColumnHeader.Text = "Time Remaining";
-            this.timeRemainingColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.timeRemainingColumnHeader.Width = 180;
             // 
             // selectItemLabel
             // 
@@ -154,6 +109,7 @@
             this.logoutButton.TabIndex = 8;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // itemSelector
             // 
@@ -173,11 +129,69 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Select an Item ID:";
             // 
+            // ItemListViewer
+            // 
+            this.ItemListViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ItemListViewer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ItemID,
+            this.ItemName,
+            this.CurrentBid,
+            this.CurrentLeader,
+            this.EndTime});
+            this.ItemListViewer.Location = new System.Drawing.Point(-4, 75);
+            this.ItemListViewer.Name = "ItemListViewer";
+            this.ItemListViewer.RowHeadersWidth = 51;
+            this.ItemListViewer.RowTemplate.Height = 29;
+            this.ItemListViewer.Size = new System.Drawing.Size(654, 227);
+            this.ItemListViewer.TabIndex = 11;
+            this.ItemListViewer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // ItemID
+            // 
+            this.ItemID.HeaderText = "ItemID";
+            this.ItemID.MinimumWidth = 6;
+            this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
+            this.ItemID.Width = 125;
+            // 
+            // ItemName
+            // 
+            this.ItemName.HeaderText = "Item Name";
+            this.ItemName.MinimumWidth = 6;
+            this.ItemName.Name = "ItemName";
+            this.ItemName.ReadOnly = true;
+            this.ItemName.Width = 125;
+            // 
+            // CurrentBid
+            // 
+            this.CurrentBid.HeaderText = "Current Bid";
+            this.CurrentBid.MinimumWidth = 6;
+            this.CurrentBid.Name = "CurrentBid";
+            this.CurrentBid.ReadOnly = true;
+            this.CurrentBid.Width = 125;
+            // 
+            // CurrentLeader
+            // 
+            this.CurrentLeader.HeaderText = "Current Leader";
+            this.CurrentLeader.MinimumWidth = 6;
+            this.CurrentLeader.Name = "CurrentLeader";
+            this.CurrentLeader.ReadOnly = true;
+            this.CurrentLeader.Width = 125;
+            // 
+            // EndTime
+            // 
+            this.EndTime.HeaderText = "End Time";
+            this.EndTime.MinimumWidth = 6;
+            this.EndTime.Name = "EndTime";
+            this.EndTime.ReadOnly = true;
+            this.EndTime.Width = 125;
+            // 
             // PlaceBidMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 701);
+            this.Controls.Add(this.ItemListViewer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.itemSelector);
             this.Controls.Add(this.logoutButton);
@@ -186,7 +200,6 @@
             this.Controls.Add(this.newBidTextBox);
             this.Controls.Add(this.selectedDescriptionLabel);
             this.Controls.Add(this.selectItemLabel);
-            this.Controls.Add(this.currentItemsListView);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -194,6 +207,7 @@
             this.Name = "PlaceBidMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PlaceBidMenu";
+            ((System.ComponentModel.ISupportInitialize)(this.ItemListViewer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,19 +216,19 @@
         #endregion
 
         private Label label1;
-        private ListView currentItemsListView;
-        private ColumnHeader itemNameColumnHeader;
-        private ColumnHeader currentBidColumnHeader;
-        private ColumnHeader currentLeaderColumnHeader;
-        private ColumnHeader timeRemainingColumnHeader;
         private Label selectItemLabel;
         private Label selectedDescriptionLabel;
         private TextBox newBidTextBox;
         private Label newBidLabel;
         private Button placeBidButton;
         private Button logoutButton;
-        private ColumnHeader ItemIDHeader;
         private ComboBox itemSelector;
         private Label label2;
+        private DataGridView ItemListViewer;
+        private DataGridViewTextBoxColumn ItemID;
+        private DataGridViewTextBoxColumn ItemName;
+        private DataGridViewTextBoxColumn CurrentBid;
+        private DataGridViewTextBoxColumn CurrentLeader;
+        private DataGridViewTextBoxColumn EndTime;
     }
 }

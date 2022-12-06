@@ -5,42 +5,48 @@ namespace GoodsAuctionWinFormsApp.Boundary
 {
     public partial class AddItemMenu : Form
     {
+        ItemList currentItems; 
+
         public AddItemMenu()
         {
             InitializeComponent();
         }
-
-        private ItemList Item;
-        public void select()
-        {
-
-        }
-
+        
         //This populates the chart
         public void refresh(ItemList list)
-        {   
+        {
+           
+            currentItems = list;
+
+            int num = 0;
+            string[] row = new string[5];
+
             foreach (Item i in list)
             {
-                currentItemsListView.Items.Add(i.getItemID().ToString(), 0);
-                currentItemsListView.Items.Add(i.getItemID().ToString(), 1);
-                currentItemsListView.Items.Add(i.getCurrentBid().ToString(),2);
-                currentItemsListView.Items.Add(i.getCurrentLeader(),3);
-                currentItemsListView.Items.Add(i.getTimeRemaining().ToString(),4);
+
+                row[0] = i.getItemID().ToString();
+                row[1] = i.getItemName();
+                row[2] = i.getCurrentBid().ToString();
+                row[3] = i.getCurrentLeader();
+                row[4] = i.getTimeRemaining().ToString();
+
+
+                ItemListViewer.Rows.Add(row);
             }
         }
 
+
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            LogOutControl.logout();
+            LogOutControl.logout(LoginControl.getAccount());
+            AddItemMenu menu = new AddItemMenu();
             this.Close();
-           
         }
 
         private void insertNewItemButton_Click(object sender, EventArgs e)
         {
-            Form itemForm = new AddItemForm();
-            itemForm.Show();
-
+            AddItemControl.AddItem();
+            this.Close();
         }
     }
 }

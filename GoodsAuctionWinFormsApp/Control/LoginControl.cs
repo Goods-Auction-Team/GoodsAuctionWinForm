@@ -1,5 +1,6 @@
 ﻿using GoodsAuctionWinFormsApp.Entity;
 using GoodsAuctionWinFormsApp.Boundary;
+using GoodsAuctionWinFormsApp;
 
 
 namespace GoodsAuctionWinFormsApp.Control
@@ -8,49 +9,76 @@ namespace GoodsAuctionWinFormsApp.Control
     {
         private Account username;
 
-        private static string un = "No User";
+       private static Account loginAccount;
 
-        
-        public static bool Login(string username, string password)
+        public static Account getAccount()
         {
-            //login
-            //The return bool is for success or failure of the login
-            Account loginAccount;
+            return loginAccount;
+        }
 
-            loginAccount = DBConnect.getUser(username);
+        public static bool login(string username, string password)
+        {
+            //The return bool is for success or failure of the login
+
+            loginAccount = StartupController.andrewAccount;
             bool success = validate(loginAccount);
             bool pwAccept = checkPassword(loginAccount, password);
 
             if (success && pwAccept)
             {
                 if (loginAccount.getType())
-                    new AddItemMenu();
+                {
+                    AddItemMenu newMenu = new AddItemMenu();
+                    newMenu.Show();
+                    newMenu.refresh(StartupController.iList);
+                }
                 else
-                    new PlaceBidMenu();
+                {
+                    PlaceBidMenu newMenUPlace = new PlaceBidMenu();
+                    newMenUPlace.Show();
+                    newMenUPlace.refresh(StartupController.iList);
+                }
                 return true;
             }
             else
             {
                 return false;
-
             }
         }
 
 
+        //Need to Validate
         public static bool validate(Account a)
         {
             //test for validation of account
             //ANTI SQL-STUFF
+
             return true;
+
+            //if (a != null /* &&  a is in DB?*/ )
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}            
         }
 
 
+        //complete
         public static bool checkPassword(Account a, string password)
         {
-            if(password.GetHashCode() == a.getPassword())
+            
+            if (password.GetHashCode() == a.getPassword())
+            {
                 return true;
+                
+            } 
             else
+            {
                 return false;
+            }
         }
   
     }
