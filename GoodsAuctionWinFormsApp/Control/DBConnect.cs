@@ -9,9 +9,10 @@ namespace GoodsAuctionWinFormsApp.Control
 {
     public class DBConnect : Controller
     {
-        
+
         public static void InitDB()
         {
+
             using (SQLiteConnection conn = new SQLiteConnection(@"data source = nAuctionDb.db"))
             {
                 using (SQLiteCommand cmnd = new SQLiteCommand())
@@ -29,7 +30,7 @@ namespace GoodsAuctionWinFormsApp.Control
                     cmnd.ExecuteNonQuery();
                     string table = @"CREATE TABLE [ACCOUNT] (
                                  [username] TEXT PRIMARY KEY NOT NULL
-                               , [password] TEXT NOT NULL
+                               , [password] INTEGER NOT NULL
                                , [type] TEXT NOT NULL
                                , CONSTRAINT [PK_ACCOUNT] PRIMARY KEY ([username]));";
 
@@ -67,8 +68,10 @@ namespace GoodsAuctionWinFormsApp.Control
                 }
             }
         }
-      public static void InsertData(SQLiteConnection conn)
-      {
+
+
+        public static void InsertData(SQLiteConnection conn)
+        {
             SQLiteCommand sqliteCommand;
             sqliteCommand = conn.CreateCommand();
             sqliteCommand.CommandText = "INSERT INTO ACCOUNT(username" +
@@ -78,12 +81,14 @@ namespace GoodsAuctionWinFormsApp.Control
             sqliteCommand.CommandText = "INSERT INTO ACCOUNT(username" +
                 "                                          , password" +
                 "                                          , type) VALUES ('auctioneer@email.com'," +
-                "                                          'Password1','auctioneer')";
+                "                                          1232590539,'auctioneer')";
             sqliteCommand.ExecuteNonQuery();
+
+
             sqliteCommand.CommandText = "INSERT INTO ACCOUNT(username" +
                 "                                          , password" +
                 "                                          , type) VALUES ('bidder@email.com'," +
-                "                                          'Password1','bidder')";
+                "                                           1232590539 + ,'bidder')";
             sqliteCommand.ExecuteNonQuery();
             sqliteCommand.CommandText = "INSERT INTO ITEM(itemId" +
                 "                                         ,itemName" +
@@ -138,34 +143,35 @@ namespace GoodsAuctionWinFormsApp.Control
             {
                 string readerstring = sqliteReader.GetString(0);
             }
-      }
-        public static Account GetUser(string username)
-        {
-            Account account = null;
-
-            
-            return account;
         }
 
+        public static Account getUser(string user)
+        {
+            Account apple = null;
+            return apple;
+        }
+        
+//Joy's code
+      //public class DBConnect : Controller
+      //  {
+      //      private Account user;
+      //      private Item itemID;
+      //      private ItemList item;
+      //      private Account username;
+                        
+      //      public DBConnect(Account username)
+      //      {
+      //          this.username = username;
+      //      }
 
-        //Joy's code
-        //public class DBConnect : Controller
-        //  {
-        //      private Account user;
-        //      private Item itemID;
-        //      private ItemList item;
-        //      private Account username;
-
-        //      public DBConnect(Account username)
-        //      {
-        //          this.username = username;
-        //      }
-        //      
-        //      }
-        //      public void saveLogout(Account username)
-        //      {
-        //          this.username = username;
-        //      }
+      //      public Account getUser()
+      //      {
+      //          return username;
+      //      }
+      //      public void saveLogout(Account username)
+      //      {
+      //          this.username = username;
+      //      }
 
         //      public Item getItem(Item itemID)
         //      {

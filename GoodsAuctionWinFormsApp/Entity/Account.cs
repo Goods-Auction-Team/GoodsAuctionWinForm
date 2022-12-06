@@ -4,20 +4,23 @@ namespace GoodsAuctionWinFormsApp.Entity
 {
     public class Account
     {
-        private string username, password, type;
+        private string username;
+        private int password;
 
         public string GetUsername()
         {
             return username;
         }
 
-        public string getPassword()
+        public int getPassword()
         {
             return password;
         }
-        public string getType()
+        public bool getType()
         {
-            return type;
+            //true = auctioneer
+            //false = bidder
+            return true;
         }
     }
 }
