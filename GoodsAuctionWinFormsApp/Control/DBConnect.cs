@@ -220,11 +220,13 @@ item1.setItemDescription("Mega Pie!");
 item1.setItemID(1);
 item1.setItemName("MosterPie");
 item1.setTimeRemaining((DateTime.Now).AddMinutes(1));
+            item1.setStartingBid(45);
 
 item2.setItemName("Vrrrrm Car");
 item2.setItemID(2);
 item2.setItemDescription("Car go fast!");
 item2.setTimeRemaining((DateTime.Now).AddMinutes(5));
+            item2.setStartingBid(5555);
 
 StartupController.iList.Add(item1);
 StartupController.iList.Add(item2);
