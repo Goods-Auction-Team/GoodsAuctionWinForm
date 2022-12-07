@@ -1,4 +1,4 @@
-﻿using GoodsAuctionWinFormsApp.Boundary;
+using GoodsAuctionWinFormsApp.Boundary;
 using static GoodsAuctionWinFormsApp.Control.DBConnect;
 using static GoodsAuctionWinFormsApp.Boundary.LoginForm;
 using GoodsAuctionWinFormsApp.Entity;
@@ -36,11 +36,14 @@ namespace GoodsAuctionWinFormsApp.Control
          
             // call initDB 
             DBConnect.InitDB();
-            ApplicationConfiguration.Initialize();
+            Console.WriteLine(DBConnect.findAccount("aroe@augusta.edu", "Password1").getUsername());
+            Console.WriteLine((DBConnect.findAccount("", "") == null ? "null" : "found account"));
+            Console.WriteLine(DBConnect.findAccount("aroe@augusta.edu", "Password1").getUsername());
+            /*ApplicationConfiguration.Initialize();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
-            Application.Run(login = new LoginForm());
+            Application.Run(login = new LoginForm());*/
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
 
