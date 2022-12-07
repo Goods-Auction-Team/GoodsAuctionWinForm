@@ -122,6 +122,14 @@ namespace GoodsAuctionWinFormsApp.Control
                     cmd.Parameters.AddWithValue("@tR", "3");
                     cmd.Parameters.AddWithValue("@cL", "Joy");
                     cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@iI", "2");
+                    cmd.Parameters.AddWithValue("@iN", "Pie");
+                    cmd.Parameters.AddWithValue("@iD", "Tasty tasty.");
+                    cmd.Parameters.AddWithValue("@sB", "2");
+                    cmd.Parameters.AddWithValue("@cB", "44");
+                    cmd.Parameters.AddWithValue("@tR", "3");
+                    cmd.Parameters.AddWithValue("@cL", "Joy");
+                    cmd.ExecuteNonQuery();
                 }
 
             }
@@ -191,21 +199,6 @@ namespace GoodsAuctionWinFormsApp.Control
 
         }
 
-        public static string hash(string input)
-        {
-            StringBuilder s = new StringBuilder();
-
-            using (SHA256 hash = SHA256.Create())
-            {
-                byte[] result = hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-                foreach (byte b in result)
-                    s.Append(b.ToString("x2"));
-            }
-            return s.ToString();
-        }
-
-
         public static Account findAccount(string username)
         {
             using (SQLiteConnection conn = new SQLiteConnection(connStr))
@@ -231,7 +224,38 @@ namespace GoodsAuctionWinFormsApp.Control
         public static void UpdateItemDatabase(ItemList list)
         {
 
-            //overwrites ITEMs with this list
+            
+
+            string sql = "INSERT INTO ITEM(itemId, itemName, itemDescription, startingBid, currentBid, timeRemaining, currentLeader) Values (@iI, @iN, @iD,@sB, @cB, @tR, @cL);";
+            using (SQLiteConnection conn = new SQLiteConnection(connStr))
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(dbInsertDeletions, conn))
+
+                {
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+            using (SQLiteConnection conn = new SQLiteConnection(connStr))
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
+                foreach(Item i in StartupController.iList)
+                {
+                    cmd.Parameters.AddWithValue("@iI", i.getItemID());
+                    cmd.Parameters.AddWithValue("@iN", i.getItemName());
+                    cmd.Parameters.AddWithValue("@iD", i.getItemDescription());
+                    cmd.Parameters.AddWithValue("@sB", i.getStartingBid());
+                    cmd.Parameters.AddWithValue("@cB", i.getCurrentBid());
+                    cmd.Parameters.AddWithValue("@tR", 5);
+                    cmd.Parameters.AddWithValue("@cL", i.getCurrentLeader());
+                    cmd.ExecuteNonQuery();
+             
+                }
+
+            }
+
 
         }
 
@@ -293,7 +317,24 @@ namespace GoodsAuctionWinFormsApp.Control
             FOREIGN KEY(itemID) REFERENCES [ITEM]([ID]),
             FOREIGN KEY(buyerID) REFERENCES [ACCOUNT]([ID])
             );";
-    
+
+        static string dbInsertDeletions = @"
+                    BEGIN TRANSACTION; 
+                    DROP TABLE IF EXISTS ITEM;
+                    DROP TABLE IF EXISTS LOGOUT;
+                    DROP TABLE IF EXISTS BIDS;
+                    COMMIT;
+
+
+            CREATE TABLE [ITEM] (
+            [itemId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            [itemName] TEXT NOT NULL,
+            [itemDescription] TEXT NOT NULL,
+            [startingBid] INTEGER NOT NULL,                     
+            [currentBid] INTEGER NOT NULL,
+            [timeRemaining] INTEGER NOT NULL,
+            [currentLeader] TEXT NOT NULL
+            );";
 
         public static void InsertData(SQLiteConnection conn)
         {

@@ -30,9 +30,8 @@ namespace GoodsAuctionWinFormsApp.Boundary
                 row[0] = i.getItemID().ToString();
                 row[1] = i.getItemName();
                 if (i.getCurrentBid() == 0)
-                    row[2] = i.getCurrentBid().ToString();
-                else
-                    row[2] = i.getStartingBid().ToString();
+                    i.setCurrentBid(i.getStartingBid());
+                row[2] = i.getCurrentBid().ToString();
                 row[3] = i.getCurrentLeader(); 
                 row[4] = i.getTimeRemaining().ToString();
 
@@ -58,6 +57,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
                     {
 
                         bool greaterBid = PlaceBidControl.CheckBid(bid, i.getCurrentBid());
+
                         if (success && greaterBid)
                         {
                             i.setCurrentBid(bid);
@@ -68,6 +68,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
                             PlaceBidControl.UpateDatabase(currentItems, i);
                             refresh(StartupController.iList);
                         }
+
                         else
                         {
                             newBidTextBox.BackColor = Color.Red;

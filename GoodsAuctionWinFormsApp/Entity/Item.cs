@@ -28,7 +28,7 @@ namespace GoodsAuctionWinFormsApp.Entity
             setStartingBid(startingBid);
             setCurrentBid(currentBid);
             setTimeRemaining(timeRemaining);
-            setCurrentLeaderID(currentLeaderID);
+            setCurrentLeader(currentLeader);
         }
 
         public int getItemID()
@@ -55,7 +55,7 @@ namespace GoodsAuctionWinFormsApp.Entity
         {
             this.itemDescription = itemDescription;
         }
-        public float getStartingBid()
+        public int getStartingBid()
         {
             return this.startingBid;
         }
@@ -73,34 +73,21 @@ namespace GoodsAuctionWinFormsApp.Entity
         }
         public DateTime getTimeRemaining()
         {
-            return this.timeRemaining; //Not sure if this is correct
+            return this.timeRemaining; 
         }
         public void setTimeRemaining(DateTime timeRemaining)
         {
             this.timeRemaining = timeRemaining;
         }
 
-        [Obsolete("use getCurrentLeaderID instead.")]
         public string getCurrentLeader()
         {
-            return currentLeader; //maybe??
+            return currentLeader;
         }
 
-        [Obsolete("use setCurrentLeaderID(int id) instead.")]
         public void setCurrentLeader(string username)
         {
             this.currentLeader = username;
-        }
-
-
-        public int getCurrentLeaderID()
-        {
-            return currentLeaderID; //maybe??
-        }
-
-        public void setCurrentLeaderID(int id)
-        {
-            this.currentLeaderID = id;
         }
 
     }

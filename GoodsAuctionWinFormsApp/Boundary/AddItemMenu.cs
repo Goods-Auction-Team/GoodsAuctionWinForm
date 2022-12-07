@@ -26,6 +26,8 @@ namespace GoodsAuctionWinFormsApp.Boundary
 
                 row[0] = i.getItemID().ToString();
                 row[1] = i.getItemName();
+                if (i.getCurrentBid() == 0)
+                    i.setCurrentBid(i.getStartingBid());
                 row[2] = i.getCurrentBid().ToString();
                 row[3] = i.getCurrentLeader();
                 row[4] = i.getTimeRemaining().ToString();
