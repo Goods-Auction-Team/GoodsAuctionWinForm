@@ -57,8 +57,9 @@ namespace GoodsAuctionWinFormsApp.Boundary
                     {
 
                         bool greaterBid = PlaceBidControl.CheckBid(bid, i.getCurrentBid());
+                        bool dateNotPassed = PlaceBidControl.CheckTime(i.getTimeRemaining());
 
-                        if (success && greaterBid)
+                        if (success && greaterBid && dateNotPassed)
                         {
                             i.setCurrentBid(bid);
                             i.setCurrentLeader(LoginControl.getAccount().GetUsername());
@@ -71,6 +72,10 @@ namespace GoodsAuctionWinFormsApp.Boundary
 
                         else
                         {
+                            if(!dateNotPassed)
+                        {
+                            newBidTextBox.Text = "EXPIRED";
+                        }
                             newBidTextBox.BackColor = Color.Red;
                         }
                     }

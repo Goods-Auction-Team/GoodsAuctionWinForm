@@ -35,5 +35,12 @@ namespace GoodsAuctionWinFormsApp.Control
             else
                 return false;
         }
+
+        public static bool CheckTime(DateTime dt)
+        {
+            if (dt > DateTime.Now)
+                return true;
+            return false;
+        }
     }
 }

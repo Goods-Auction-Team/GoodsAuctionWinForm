@@ -32,7 +32,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
 
                 DateTime time = DateTime.Now;
 
-                newItem.setTimeRemaining( time.AddMinutes(  Convert.ToDouble(durationComboBox.SelectedIndex) ) );
+                newItem.setTimeRemaining( time.AddMinutes(  Convert.ToInt32(durationComboBox.Text) ) );
 
                 bool succesfulAdd = AddItemControl.Submit(newItem);
 
