@@ -21,7 +21,7 @@ namespace GoodsAuctionWinFormsApp.Control
             //This should be for the database
 
             StartupController.iList = update;
-            DBConnect.UpdateBids(i, LoginControl.getAccount());
+            DBConnect.UpdateBids(i);
             DBConnect.UpdateItemDatabase(StartupController.iList);
         }
 

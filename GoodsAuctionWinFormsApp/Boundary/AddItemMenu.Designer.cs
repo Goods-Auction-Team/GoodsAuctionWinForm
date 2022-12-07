@@ -51,7 +51,7 @@
             // 
             // insertNewItemButton
             // 
-            this.insertNewItemButton.Location = new System.Drawing.Point(299, 342);
+            this.insertNewItemButton.Location = new System.Drawing.Point(391, 332);
             this.insertNewItemButton.Name = "insertNewItemButton";
             this.insertNewItemButton.Size = new System.Drawing.Size(194, 55);
             this.insertNewItemButton.TabIndex = 2;
@@ -62,7 +62,7 @@
             // logoutButton
             // 
             this.logoutButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.logoutButton.Location = new System.Drawing.Point(554, 393);
+            this.logoutButton.Location = new System.Drawing.Point(795, 393);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(77, 34);
             this.logoutButton.TabIndex = 3;
@@ -84,7 +84,7 @@
             this.ItemListViewer.Name = "ItemListViewer";
             this.ItemListViewer.RowHeadersWidth = 51;
             this.ItemListViewer.RowTemplate.Height = 29;
-            this.ItemListViewer.Size = new System.Drawing.Size(779, 227);
+            this.ItemListViewer.Size = new System.Drawing.Size(981, 227);
             this.ItemListViewer.TabIndex = 12;
             // 
             // ItemID
@@ -126,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 439);
+            this.ClientSize = new System.Drawing.Size(994, 439);
             this.Controls.Add(this.ItemListViewer);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.insertNewItemButton);

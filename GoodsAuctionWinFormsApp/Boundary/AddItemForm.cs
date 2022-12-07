@@ -28,6 +28,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
                 newItem.setStartingBid(startBid);
                 newItem.setItemDescription(itemDescriptionTextBox.Text);
                 newItem.setItemName(itemNameTextBox.Text);
+                newItem.setCurrentLeader("");
 
                 DateTime time = DateTime.Now;
 

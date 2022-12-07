@@ -25,52 +25,6 @@ namespace GoodsAuctionWinFormsApp.Control
         }
 
 
-
-        public Account getUser()
-        {
-            return user;
-        }
-
-        private void setUser(Account account)
-        {
-            this.user = account;
-        }
-
-        public void saveLogout(Account username)
-        {
-            this.username = username;
-        }
-
-        public Item getItem(Item itemID)
-        {
-            //This item ID returns the item
-            return null;
-        }
-
-        public ItemList modifyItem(Item itemID, string newBid, Account username)
-        {
-            return null;//This is the placebid where it updates the item after bid and 
-                        //returns ItemList
-            return null;
-        }
-
-        public ItemList saveItem(Item item)
-        {
-            //This is the addItem where the data is saved
-            return null;
-        }
-
-        // adding saveLogout(un) from sequence diagram
-        public bool saveLogout(string username)
-        {
-            // not sure if this is right, but I'm trying to check if it saved correctly
-            // if true, sends it back to LoginForm for (logged out sucess)
-            if (username != null)
-            {
-                return true;
-            }
-            else { return false; }
-        }
         private static string connStr = @"Data Source=Auctiondb.db"; //@"Data Source =.;Initial Catalog = Auctiondb; Trusted_Connection=true";
 
         public static void InitDB()
@@ -120,7 +74,7 @@ namespace GoodsAuctionWinFormsApp.Control
                     cmd.Parameters.AddWithValue("@sB", "10000");
                     cmd.Parameters.AddWithValue("@cB", "10002");
                     cmd.Parameters.AddWithValue("@tR", "3");
-                    cmd.Parameters.AddWithValue("@cL", "Joy");
+                    cmd.Parameters.AddWithValue("@cL", "bob@notjoy.net");
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.AddWithValue("@iI", "2");
                     cmd.Parameters.AddWithValue("@iN", "Pie");
@@ -128,7 +82,7 @@ namespace GoodsAuctionWinFormsApp.Control
                     cmd.Parameters.AddWithValue("@sB", "2");
                     cmd.Parameters.AddWithValue("@cB", "44");
                     cmd.Parameters.AddWithValue("@tR", "3");
-                    cmd.Parameters.AddWithValue("@cL", "Joy");
+                    cmd.Parameters.AddWithValue("@cL", "bob@notjoy.net");
                     cmd.ExecuteNonQuery();
                 }
 
@@ -148,7 +102,7 @@ namespace GoodsAuctionWinFormsApp.Control
                 }
             }
 
-            sql = "INSERT INTO BIDS(itemId, buyerID, amount) VALUES (@i, @b, @a);";
+            sql = "INSERT INTO BIDS(itemId, buyer, amount) VALUES (@i, @b, @a);";
 
             using (SQLiteConnection conn = new SQLiteConnection(connStr))
             {
@@ -157,7 +111,7 @@ namespace GoodsAuctionWinFormsApp.Control
 
                 {
                     cmd.Parameters.AddWithValue("@i", "1");
-                    cmd.Parameters.AddWithValue("@b", "Joy");
+                    cmd.Parameters.AddWithValue("@b", "joy@shutup.net");
                     cmd.Parameters.AddWithValue("@a", "30");
                     cmd.ExecuteNonQuery();
                 }
@@ -227,6 +181,7 @@ namespace GoodsAuctionWinFormsApp.Control
             
 
             string sql = "INSERT INTO ITEM(itemId, itemName, itemDescription, startingBid, currentBid, timeRemaining, currentLeader) Values (@iI, @iN, @iD,@sB, @cB, @tR, @cL);";
+           
             using (SQLiteConnection conn = new SQLiteConnection(connStr))
             {
                 conn.Open();
@@ -261,12 +216,33 @@ namespace GoodsAuctionWinFormsApp.Control
 
         public static void UpdateLastLogout(Account loggingOutAccount)
         {
-            //saves Account.getUsername & DATETIME
+            string sql = "INSERT INTO LOGOUT(account, time) Values (@iA, @iT);";
+
+            using (SQLiteConnection conn = new SQLiteConnection(connStr))
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@iA", loggingOutAccount.GetUsername());
+                    cmd.Parameters.AddWithValue("@iT", 5);
+                }
+            }
         }
 
-        public static void UpdateBids(Item item, Account account)
+        public static void UpdateBids(Item item)
         {
-            //Saves Item Name, bid, and account's username
+            string sql = "INSERT INTO BIDS(itemid,buyer,amount) Values (@iI, @iTB, @iA);";
+
+            using (SQLiteConnection conn = new SQLiteConnection(connStr))
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@iA", item.getCurrentBid());
+                    cmd.Parameters.AddWithValue("@iI", item.getItemID());
+                    cmd.Parameters.AddWithValue("@iA", item.getCurrentLeader());
+                }
+            }
         }
 
     
@@ -309,20 +285,18 @@ namespace GoodsAuctionWinFormsApp.Control
 
             CREATE TABLE [BIDS] (
             [itemID] INTEGER PRIMARY KEY NOT NULL,
-            [buyerID] TEXT NOT NULL,
+            [buyer] TEXT NOT NULL,
             [amount] INTEGER NOT NULL,
 
 
 
             FOREIGN KEY(itemID) REFERENCES [ITEM]([ID]),
-            FOREIGN KEY(buyerID) REFERENCES [ACCOUNT]([ID])
+            FOREIGN KEY(buyer) REFERENCES [ACCOUNT]([username])
             );";
 
         static string dbInsertDeletions = @"
                     BEGIN TRANSACTION; 
                     DROP TABLE IF EXISTS ITEM;
-                    DROP TABLE IF EXISTS LOGOUT;
-                    DROP TABLE IF EXISTS BIDS;
                     COMMIT;
 
 
@@ -336,12 +310,6 @@ namespace GoodsAuctionWinFormsApp.Control
             [currentLeader] TEXT NOT NULL
             );";
 
-        public static void InsertData(SQLiteConnection conn)
-        {
-            //string sql = "INSERT INTO ACCOUNT(username, password, type) VALUES(@u1, @p1, @t1), (@u2, @p2, @t2);"
-            if (true)
-                return;
-        }
      
-}
+    }
 }
