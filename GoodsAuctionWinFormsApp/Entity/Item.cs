@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace GoodsAuctionWinFormsApp.Entity
 {
@@ -12,9 +12,25 @@ namespace GoodsAuctionWinFormsApp.Entity
         private int currentBid;
         private DateTime timeRemaining; //not sure if this is correct
         private string currentLeader;
-        private Account username;
+        private int currentLeaderID;
 
         public int ItemID { get { return itemID;} }
+
+        public Item()
+        {
+
+        }
+        public Item(int itemID, string itemName, string itemDescription, int startingBid, int currentBid, DateTime timeRemaining, int currentLeaderID)
+        {
+            setItemID(itemID);
+            setItemName(itemName);
+            setItemDescription(itemDescription);
+            setStartingBid(startingBid);
+            setCurrentBid(currentBid);
+            setTimeRemaining(timeRemaining);
+            setCurrentLeaderID(currentLeaderID);
+        }
+
         public int getItemID()
         {
             return this.itemID;
@@ -63,13 +79,28 @@ namespace GoodsAuctionWinFormsApp.Entity
         {
             this.timeRemaining = timeRemaining;
         }
+
+        [Obsolete("use getCurrentLeaderID instead.")]
         public string getCurrentLeader()
         {
             return currentLeader; //maybe??
         }
+
+        [Obsolete("use setCurrentLeaderID(int id) instead.")]
         public void setCurrentLeader(string username)
         {
             this.currentLeader = username;
+        }
+
+
+        public int getCurrentLeaderID()
+        {
+            return currentLeaderID; //maybe??
+        }
+
+        public void setCurrentLeaderID(int id)
+        {
+            this.currentLeaderID = id;
         }
 
     }
