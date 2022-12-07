@@ -9,6 +9,14 @@ namespace GoodsAuctionWinFormsApp.Entity
         private static DateTime lastLogin;
         private bool type;
 
+
+        public Account(string username, int password, bool type)
+        {
+            this.username = username;
+            this.password = password;
+            this.type = type;
+        }
+
         public string GetUsername()
         {
             return username;

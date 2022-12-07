@@ -61,7 +61,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
                         if (success && greaterBid)
                         {
                             i.setCurrentBid(bid);
-                            i.setCurrentLeader(LoginControl.getAccount().getUsername());
+                            i.setCurrentLeader(LoginControl.getAccount().GetUsername());
                             newBidTextBox.BackColor = Color.White;
                             ItemListViewer.Rows.Clear();
 

@@ -20,7 +20,7 @@ namespace GoodsAuctionWinFormsApp.Entity
         {
 
         }
-        public Item(int itemID, string itemName, string itemDescription, int startingBid, int currentBid, DateTime timeRemaining, int currentLeaderID)
+        public Item(int itemID, string itemName, string itemDescription, int startingBid, int currentBid, DateTime timeRemaining, string currentLeader)
         {
             setItemID(itemID);
             setItemName(itemName);
