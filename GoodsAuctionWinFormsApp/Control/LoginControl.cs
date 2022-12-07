@@ -7,14 +7,15 @@ namespace GoodsAuctionWinFormsApp.Control
 {
     public class LoginControl : Controller
     {
-        private Account username;
-
+      
+        //stores logged in user
        private static Account loginAccount;
 
         public static Account getAccount()
         {
             return loginAccount;
         }
+
 
         public static bool login(string username, string password)
         {
@@ -54,11 +55,10 @@ namespace GoodsAuctionWinFormsApp.Control
         }
 
 
-        //Need to Validate
+        //Checks for special characters to help prevent injection, as well as to check proper formatting
         public static bool validate(string username)
         {
-            //test for validation of account
-            //ANTI SQL-STUFF
+
             int countAT = 0, countDOT = 0;
 
             foreach (char c in username)
@@ -79,7 +79,7 @@ namespace GoodsAuctionWinFormsApp.Control
         }
 
 
-        //complete
+        //checks the returned hash from the DB with the hashed input 
         public static bool checkPassword(Account a, string password)
         {
             

@@ -16,7 +16,7 @@ namespace GoodsAuctionWinFormsApp.Control
    
        
 
-        //this function should only be necessary for hardcoding
+        //this function creates itemID automatically for created function, giving it the next available int.
         public static int nextID()
         {
             int id = 0;

@@ -45,6 +45,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
             this.Close();
         }
 
+        //launches add item form and closes
         private void insertNewItemButton_Click(object sender, EventArgs e)
         {
             AddItemControl.AddItem();

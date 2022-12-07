@@ -1,6 +1,4 @@
 ﻿
-using Microsoft.VisualBasic.Logging;
-
 namespace GoodsAuctionWinFormsApp.Boundary
 {
     public partial class LoginForm : Form
@@ -12,8 +10,8 @@ namespace GoodsAuctionWinFormsApp.Boundary
             InitializeComponent();
             
         }
-        private string error;
 
+        //This will indicate logged out
         public void setLoggedOut()
         {
            failedLoginLabel.Text = "Logged out successully!";

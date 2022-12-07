@@ -1,6 +1,5 @@
 ﻿using GoodsAuctionWinFormsApp.Entity;
 using GoodsAuctionWinFormsApp.Control;
-using System;
 
 namespace GoodsAuctionWinFormsApp.Boundary
 {
@@ -14,14 +13,20 @@ namespace GoodsAuctionWinFormsApp.Boundary
         }
 
 
+        //button click
         private void addItemButton_Click(object sender, EventArgs e)
         {
             Item newItem = new Item();
 
+            //tests that the bid is an int, that it is >0, and that the name is not empty
             int startBid;
             bool correct = int.TryParse(StartBidBox.Text, out startBid);
+
+
             if (startBid <= 0 || (itemNameTextBox.Text == ""))
                 correct = false;
+
+            //creates the new item and assigns names
             if (correct)
             {
 

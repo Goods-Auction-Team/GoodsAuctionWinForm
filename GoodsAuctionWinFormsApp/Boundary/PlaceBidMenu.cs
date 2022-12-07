@@ -7,6 +7,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
     {
         private ItemList currentItems = StartupController.iList;
 
+        //list to populate the drop down selection
         private List<int> itemIDNumbers = new List<int>();
 
 
@@ -15,7 +16,7 @@ namespace GoodsAuctionWinFormsApp.Boundary
             InitializeComponent();
         }
 
-
+        //populates chart
         public void refresh(ItemList list)
         {
             currentItems = list;
@@ -29,6 +30,8 @@ namespace GoodsAuctionWinFormsApp.Boundary
 
                 row[0] = i.getItemID().ToString();
                 row[1] = i.getItemName();
+
+                //if no current bid, sets it to the starting bid
                 if (i.getCurrentBid() == 0)
                     i.setCurrentBid(i.getStartingBid());
                 row[2] = i.getCurrentBid().ToString();
@@ -42,23 +45,27 @@ namespace GoodsAuctionWinFormsApp.Boundary
 
         }
 
+        //button click
         private void placeBidButton_Click(object sender, EventArgs e)
         {
             int bid;
+
+            //ensures an int
             bool success = int.TryParse(newBidTextBox.Text, out bid);
-            int currentBid;
             
             //ensures is a POSITIVE Int
            
            
                 foreach (Item i in currentItems)
                 {
+                    //proceeds only if the dropdown ID corresponds
                     if (itemSelector.Text == i.getItemID().ToString())
                     {
 
                         bool greaterBid = PlaceBidControl.CheckBid(bid, i.getCurrentBid());
                         bool dateNotPassed = PlaceBidControl.CheckTime(i.getTimeRemaining());
 
+                    //only passes if int is appropriate, it is not the lesser bid, and time has not expired
                         if (success && greaterBid && dateNotPassed)
                         {
                             i.setCurrentBid(bid);
@@ -73,9 +80,9 @@ namespace GoodsAuctionWinFormsApp.Boundary
                         else
                         {
                             if(!dateNotPassed)
-                        {
+                            {
                             newBidTextBox.Text = "EXPIRED";
-                        }
+                            }
                             newBidTextBox.BackColor = Color.Red;
                         }
                     }
@@ -87,6 +94,8 @@ namespace GoodsAuctionWinFormsApp.Boundary
             
         }
 
+
+        //dropdown selector populates the item name and description fields
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (Item i in currentItems)
@@ -107,6 +116,8 @@ namespace GoodsAuctionWinFormsApp.Boundary
 
         }
 
+
+        //below does nothing, but WinForm will throw an error if deleted
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }

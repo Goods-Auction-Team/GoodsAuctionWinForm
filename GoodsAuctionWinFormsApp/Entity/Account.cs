@@ -53,7 +53,9 @@ namespace GoodsAuctionWinFormsApp.Entity
         {
             lastLogin = datetime;
         }
+        
 
+        //not actually used in this implementation, but was included because of the requirement to include logging
         public static DateTime GetLastLogin()
         {
             return lastLogin;

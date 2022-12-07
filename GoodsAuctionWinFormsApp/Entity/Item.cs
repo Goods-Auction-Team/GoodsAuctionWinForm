@@ -10,11 +10,9 @@ namespace GoodsAuctionWinFormsApp.Entity
         private string itemDescription;
         private int startingBid;
         private int currentBid;
-        private DateTime timeRemaining; //not sure if this is correct
+        private DateTime timeRemaining; 
         private string currentLeader;
-        private int currentLeaderID;
 
-        public int ItemID { get { return itemID;} }
 
         public Item()
         {

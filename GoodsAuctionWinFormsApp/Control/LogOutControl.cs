@@ -5,19 +5,17 @@ namespace GoodsAuctionWinFormsApp.Control
 {
     public class LogOutControl : Controller
     {
-        private Account username;
+ 
 
         public static void logout(Account a)
         {
 
             a.SetLastLogin(DateTime.Now);
-            //can pull UN from loginControl, rather than having the boundries hold the name
 
-            // pass in username, return?
-            /* Account account = DBConnect.getUser();
-             */
-
+            //updates db with username being logged out
             DBConnect.UpdateLastLogout(a);
+
+            //creates login form w/ logout message
             StartupController.login.Show();
             StartupController.login.setLoggedOut();
             
