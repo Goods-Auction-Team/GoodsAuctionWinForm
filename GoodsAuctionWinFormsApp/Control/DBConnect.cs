@@ -24,7 +24,7 @@ namespace GoodsAuctionWinFormsApp.Control
         {
         }
 
-        
+
 
         public Account getUser()
         {
@@ -82,7 +82,7 @@ namespace GoodsAuctionWinFormsApp.Control
                 using (SQLiteCommand cmd = new SQLiteCommand(dbTables, conn))
 
                 {
-                  cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
 
                     /*conn.Open();
                     cmnd.Connection = conn;
@@ -138,8 +138,7 @@ namespace GoodsAuctionWinFormsApp.Control
                 }
             }
 
-
-            string sql = "INSERT INTO ACCOUNT(username, password, type) VALUES(@u1, @p1, @t1), (@u2, @p2, @t2);"
+            string sql = "INSERT INTO ACCOUNT(username, password, type) VALUES(@u1, @p1, @t1), (@u2, @p2, @t2);";
 
             using (SQLiteConnection conn = new SQLiteConnection(connStr))
             {
@@ -156,9 +155,9 @@ namespace GoodsAuctionWinFormsApp.Control
                     cmd.ExecuteNonQuery();
                 }
             }
-                }
 
-            string sql = "INSERT INTO ITEM(itemId, itemName, itemDescription, startingBid, currentBid, timeRemaining, currentLeader) Values (@iI, @iN, @iD,@sB, @cB, @tR, @cL";
+
+            sql = "INSERT INTO ITEM(itemId, itemName, itemDescription, startingBid, currentBid, timeRemaining, currentLeader) Values (@iI, @iN, @iD,@sB, @cB, @tR, @cL);";
 
             using (SQLiteConnection conn = new SQLiteConnection(connStr))
             {
@@ -175,9 +174,10 @@ namespace GoodsAuctionWinFormsApp.Control
                     cmd.Parameters.AddWithValue("@cL", "Joy");
                     cmd.ExecuteNonQuery();
                 }
+
             }
-                }
-            string sql = "INSERT INTO LOGOUT(date,time,accID) VALUES (@d, @t, @a);"
+
+            sql = "INSERT INTO LOGOUT(date,time,accID) VALUES (@d, @t, @a);";
 
             using (SQLiteConnection conn = new SQLiteConnection(connStr))
             {
@@ -191,8 +191,8 @@ namespace GoodsAuctionWinFormsApp.Control
                     cmd.ExecuteNonQuery();
                 }
             }
-                }
-            string sql = "INSERT INTO BIDS(buyerID, amount) VALUES (@i, @b, @a);" 
+
+            sql = "INSERT INTO BIDS(buyerID, amount) VALUES (@i, @b, @a);";
 
             using (SQLiteConnection conn = new SQLiteConnection(connStr))
             {
@@ -206,10 +206,13 @@ namespace GoodsAuctionWinFormsApp.Control
                     cmd.ExecuteNonQuery();
                 }
             }
-                }
+
+        }
+
 
         public static void ReadData()
         {
+
             //SQLiteDataReader sqliteReader;
             //SQLiteCommand sqliteCommand;
             //sqliteCommand = conn.CreateCommand();
@@ -302,60 +305,62 @@ namespace GoodsAuctionWinFormsApp.Control
                     }
                 }
             }
-            //SQLiteCommand sqliteCommand;
-            //sqliteCommand = conn.CreateCommand();
-            //sqliteCommand.CommandText = "SELECT * FROM ACCOUNT";
-            //sqliteReader = sqliteCommand.ExecuteReader();
-            //while (sqliteReader.Read())
-            //{
-            //    Account import = new Account();
-            //    import.SetUsername(sqliteReader.GetString(0));
-            //    import.SetPassword(int.Parse(sqliteReader.GetString(1)));
-            //    import.SetType(bool.Parse(sqliteReader.GetString(2)));
+        }
 
-            //}
+        //SQLiteCommand sqliteCommand;
+        //sqliteCommand = conn.CreateCommand();
+        //sqliteCommand.CommandText = "SELECT * FROM ACCOUNT";
+        //sqliteReader = sqliteCommand.ExecuteReader();
+        //while (sqliteReader.Read())
+        //{
+        //    Account import = new Account();
+        //    import.SetUsername(sqliteReader.GetString(0));
+        //    import.SetPassword(int.Parse(sqliteReader.GetString(1)));
+        //    import.SetType(bool.Parse(sqliteReader.GetString(2)));
 
-           /* bool found = false;
+        //}
 
-             Account andrewAccount = new Account();
-            andrewAccount.SetPassword("password".GetHashCode());
-            andrewAccount.SetUsername("aroe@augusta.edu");
-            andrewAccount.SetType(false);
+        /* bool found = false;
 
-            Account Joy = new Account();
-            Joy.SetPassword("password".GetHashCode());
-            Joy.SetUsername("Joy@shutup.net");
-            Joy.SetType(true);
+          Account andrewAccount = new Account();
+         andrewAccount.SetPassword("password".GetHashCode());
+         andrewAccount.SetUsername("aroe@augusta.edu");
+         andrewAccount.SetType(false);
+
+         Account Joy = new Account();
+         Joy.SetPassword("password".GetHashCode());
+         Joy.SetUsername("Joy@shutup.net");
+         Joy.SetType(true);
 
 
-            Account user = new Account();
+         Account user = new Account();
 
-            if (andrewAccount.getUsername() == username)
-                return andrewAccount;
-            if (Joy.getUsername() == username)
-                 return Joy;
-            else
-                return null;*/
-            }
+         if (andrewAccount.getUsername() == username)
+             return andrewAccount;
+         if (Joy.getUsername() == username)
+              return Joy;
+         else
+             return null;*/
 
-            public static void UpdateItemDatabase(ItemList list)
-            {
+
+        public static void UpdateItemDatabase(ItemList list)
+        {
 
             //overwrites ITEMs with this list
 
-            }
+        }
 
-            public static void UpdateLastLogout(Account loggingOutAccount)
-            {
+        public static void UpdateLastLogout(Account loggingOutAccount)
+        {
             //saves Account.getUsername & DATETIME
-            }
+        }
 
-            public static void UpdateBids(Item item, Account account)
-            {
+        public static void UpdateBids(Item item, Account account)
+        {
             //Saves Item Name, bid, and account's username
-            }
+        }
 
-
+    
         static string dbTables = @"
                     BEGIN TRANSACTION; 
                     DROP TABLE IF EXISTS ACCOUNT;
@@ -410,7 +415,7 @@ namespace GoodsAuctionWinFormsApp.Control
             FOREIGN KEY(itemID) REFERENCES [ITEM]([ID]),
             FOREIGN KEY(buyerID) REFERENCES [ACCOUNT]([ID])
             );";
-
+    
 
         public static void InsertData(SQLiteConnection conn)
         {
@@ -418,7 +423,6 @@ namespace GoodsAuctionWinFormsApp.Control
             if (true)
                 return;
         }
-        static string dbInserts = @"
-
-    }
+     
+}
 }
